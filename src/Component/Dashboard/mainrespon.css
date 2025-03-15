@@ -1,0 +1,43 @@
+@media(max-width:1920px){
+    .maintorespo{
+
+
+
+    }
+    #mapresponsive{
+   
+      height: 400px !important;
+      min-height: 400px !important;
+      
+    }
+
+
+    #maprespo{
+       
+     height: 400px !important;
+    }
+
+    .tableresponsive{
+     zoom: 0.87;
+    }
+}
+
+
+
+ /* width: calc(100% ) !important;
+        width: 100vw !important;  */
+
+
+      @media(max-width:1920px) and (max-height:1050px){
+        #maprespo{
+          height:550px !important;
+        }
+
+        .tableresponsive{
+          zoom: 1 !important;
+        }
+        #mapresponsive{
+          max-height: 550px !important;
+          height: 550px ! important;
+        }
+      }  
