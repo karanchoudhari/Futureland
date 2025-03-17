@@ -443,7 +443,7 @@ const Table = () => {
 
 
   return (
-    <div className=" overflow-auto w-full h-[363px] sticky fixed top-0  bg-dark shadow-md rounded-md">
+    <div className=" overflow-auto w-full h-full sticky fixed top-0  bg-dark shadow-md rounded-md">
     <ul className="border border-gray-300 rounded-md overflow-hidden">
       <li className="flex bg-gray-100 font-semibold text-sm text-gray-700 border-b border-gray-300">
         {[

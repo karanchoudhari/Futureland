@@ -154,6 +154,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Usermanagetable from './usermanagetable';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 const Management = () => {
   const [name, setName] = useState('');
@@ -177,6 +178,8 @@ const Management = () => {
     { id: 4, company_name: 'Smart Systems' },
     { id: 5, company_name: 'Smart Systems' }
   ]);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -207,10 +210,42 @@ const Management = () => {
     setUserExpiryDate(null);
   };
 
+  // Handle "Add Blogs" button click
+  const handleAddBlogsClick = () => {
+    navigate('/add-blogs'); // Navigate to the Add Blogs page
+  };
+
+  // Handle "Graph Manage" button click
+  const handleGraphManageClick = () => {
+    navigate('/addgraph'); // Add your logic here
+  };
+
   return (
-    <div className='p-[0px] bg-gray-900 border-l sticky
-'>
+    <div className='p-[0px] bg-gray-900 border-l sticky'
+      style={{
+        overflowY: 'auto',
+        height: '100vh',
+        width: '100%',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none'
+      }}>
       <div style={{ maxWidth: '100%', padding: '10px', margin: 'auto', borderRadius: '10px' }}>
+        {/* Add Buttons at the Top Center */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0px', gap: '10px' }}>
+          <button
+            onClick={handleAddBlogsClick}
+            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
+          >
+            Add Blogs
+          </button>
+          <button
+            onClick={handleGraphManageClick}
+            className="px-6 py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700"
+          >
+            Graph Manage
+          </button>
+        </div>
+
         <div style={{ padding: '50px', borderRadius: '8px', boxShadow: '0px 4px 6px rgba(0, 0, 0, 1)' }}>
           <h1 className="text-[35px] font-semibold mb-6 text-center text-white">User Management</h1>
 
@@ -285,13 +320,21 @@ const Management = () => {
 
             <div className="flex flex-col">
               <label className="text-white font-semibold mb-1">Expiry Date</label>
-              <DatePicker
+              {/* <DatePicker
                 selected={userExpiryDate}
                 onChange={(date) => setUserExpiryDate(date)}
                 className="w-full bg-transparent text-white border border-gray-600 rounded-md h-12 px-4"
                 placeholderText="Select Expiry Date"
                 dateFormat="dd/MM/yyyy"
-              />
+              /> */}
+              {/* <input
+                type="date"
+                value={userExpiryDate}
+                onChange={(e) => setUserExpiryDate(e.target.value)}
+                className="p-3 bg-gray-950 border border-gray-600 rounded-md text-white"
+                placeholder="Enter password"
+                required
+              /> */}
             </div>
 
             <div className="col-span-1 md:col-span-2 flex justify-between mt-6">
@@ -312,4 +355,3 @@ const Management = () => {
 };
 
 export default Management;
-

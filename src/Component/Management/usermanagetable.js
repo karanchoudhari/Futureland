@@ -72,6 +72,9 @@ function Usermanagetable({ userData }) {
           Next
         </button>
       </div>
+
+
+
     </>
   );
 }

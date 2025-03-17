@@ -43,30 +43,18 @@ const Sidebar = () => {
                     <span>Management</span>
                 </Link>
 
-                {/* karn sharma */}
-                {/* <Link to="/addproject" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
-                <LucidePlus size={20} />
-                    <span>Add-Project</span>
-                </Link> */}
 
-                <Link to="/addProject1" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
+                <Link to="/addProject" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
                 <LucidePlus size={20} />
-                    <span>Add-Project1</span>
-                </Link>
-                {/* <button className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
-                    <LucidePlus size={20} />
                     <span>Add-Project</span>
-                </button> */}
-                {/* <Link to="" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
-                    <MapPinnedIcon size={20} />
-                    <span>KML</span>
-                </Link> */}
+                </Link>
+              
                 <Link to="/overview" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
                     <OutdentIcon size={20} />
                     <span>Overview</span>
                 </Link>
             </nav>
-            {/* {showModal && <Addprojectmodal onClose={() => setShowModal(false)} onSave={() => {}} />} */}
+        
         </div>
 
 
