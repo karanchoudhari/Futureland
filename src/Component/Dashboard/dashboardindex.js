@@ -86,7 +86,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
 import Table3 from '../Table/table3';
 import Mapbox from '../Map/mapbox';
-import Blog from '../blog';
+import Blog from '../Management/Blog/blog';
 import Graph from '../Overview/graph';
 import Locationselect from '../Table/locationselect';
 

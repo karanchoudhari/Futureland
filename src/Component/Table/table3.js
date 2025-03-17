@@ -292,9 +292,11 @@ const Table3 = () => {
         const biggestProjects = {
           title: "BIGGEST PROJECTS",
           data: sortedByCost.slice(0, 5).map(project => ({
-            // name: project.project_name,
-            count: `${project.project_name} (${project.sector}-${project.state}) $${project.cost}`, // Removed the hyphen at the start
-            details: [project] // Pass the entire project object
+            // Remove the hyphen from the project name
+            count: `${project.project_name} (${project.sector}-${project.state}) $${project.cost}`,
+            details: projectsData
+              .filter(p => p.project_name === project.project_name) // Include all matching projects
+              .map(p => ({ ...p, project: p.project_name })) // Pass the entire project object
           }))
         };
 
