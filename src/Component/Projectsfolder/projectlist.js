@@ -159,6 +159,13 @@ const ProjectList = ({ onEditProject }) => {
     };
   }, []);
 
+
+
+  const handledelete = async (e) => {
+    e.stopPropagation()
+    alert("djdiih")
+  }
+
   return (
     <div className="overflow-auto w-full h-[100vh] bg-white shadow-md rounded-md">
       <ul className="border border-gray-300 rounded-md overflow-hidden">
@@ -283,7 +290,7 @@ const ProjectList = ({ onEditProject }) => {
                   >
                     <Edit className="w-4 h-4" />
                   </button>
-                  <button className="text-red-500 hover:text-red-700">
+                  <button className="text-red-500 hover:text-red-700" onClick={(e) => handledelete(e)} >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>, // Action buttons (pencil and trash icons)
@@ -313,9 +320,8 @@ const ProjectList = ({ onEditProject }) => {
             <button
               key={index}
               onClick={() => handlePageChange(index + 1)}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition-all ${
-                currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
-              }`}
+              className={`px-4 py-2 rounded-md text-sm font-semibold transition-all ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
+                }`}
             >
               {index + 1}
             </button>
