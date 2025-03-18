@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { ChevronLeft, ChevronRight, Filter, X, Search, Edit, Trash2, ArrowUpDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useSelector , useDispatch } from "react-redux";
+import {deleteProject} from "../../FeatureRedux/project/deleteProject"
 
 const ProjectList = ({ onEditProject }) => {
   const [projectList, setProjectList] = useState([]);
@@ -14,6 +16,10 @@ const ProjectList = ({ onEditProject }) => {
   const itemsPerPage = 15;
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
+
+
+  const dispatch = useDispatch();
+    const { isLoading, isError, errorMessage } = useSelector((state) => state.deleteProject);
 
   // Fetch projects from the backend
   useEffect(() => {
@@ -35,7 +41,7 @@ const ProjectList = ({ onEditProject }) => {
 
   // Handle project click to navigate to detail page
   const handleProjectClick = (project) => {
-    navigate('/detail', { state: { project } }); // Pass the entire project object
+    navigate('/detail', { state: { project } }); 
   };
 
   // Handle edit icon click
@@ -161,13 +167,18 @@ const ProjectList = ({ onEditProject }) => {
 
 
 
-  const handledelete = async (e) => {
+  const handledelete = async (e , id) => {
     e.stopPropagation()
-    alert("djdiih")
+    dispatch(deleteProject(id))
+     
   }
 
+
+
+
+
   return (
-    <div className="overflow-auto w-full h-[100vh] bg-white shadow-md rounded-md">
+    <div className="overflow-hidden w-full h-[100vh] bg-white shadow-md rounded-md">
       <ul className="border border-gray-300 rounded-md overflow-hidden">
         {/* Table Header */}
         <li className="flex bg-gray-100 font-semibold text-sm text-gray-700 border-b border-gray-300">
@@ -189,7 +200,7 @@ const ProjectList = ({ onEditProject }) => {
                 <span className="text-xs font-semibold uppercase mr-2">
                   {header.replace(/_/g, " ")}
                 </span>
-                {header !== "action" && (
+                {/* {header !== "action" && (
                   <div className="flex items-center space-x-1">
                     <button
                       onClick={() => setFilterDropdown(header === filterDropdown ? null : header)}
@@ -204,7 +215,26 @@ const ProjectList = ({ onEditProject }) => {
                       <ArrowUpDown className="w-4 h-4 text-gray-500" />
                     </button>
                   </div>
-                )}
+                )} */}
+                {header !== "action" && (
+  <div className="flex items-center space-x-1">
+    <button
+      onClick={() => setFilterDropdown(header === filterDropdown ? null : header)}
+      className="p-1 hover:bg-gray-200 rounded"
+    >
+      <Filter className="w-4 h-4 text-gray-500" />
+    </button>
+    {/* Render sorting button only for the "cost" column */}
+    {header === "cost" && (
+      <button
+        onClick={() => handleSort(header)}
+        className="p-1 hover:bg-gray-200 rounded"
+      >
+        <ArrowUpDown className="w-4 h-4 text-gray-500" />
+      </button>
+    )}
+  </div>
+)}
               </div>
               {filterDropdown === header && (
                 <div
@@ -290,7 +320,7 @@ const ProjectList = ({ onEditProject }) => {
                   >
                     <Edit className="w-4 h-4" />
                   </button>
-                  <button className="text-red-500 hover:text-red-700" onClick={(e) => handledelete(e)} >
+                  <button className="text-red-500 hover:text-red-700" onClick={(e) => handledelete(e , item._id )} >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>, // Action buttons (pencil and trash icons)

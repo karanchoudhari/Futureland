@@ -31,10 +31,10 @@ const Addproject = () => {
     
     <div className="container-fluid gap-5"
       style={{
-        overflowY: 'auto',
+        overflow: 'auto',
         height: '100vh',
         width: '100%',
-        scrollbarWidth: 'none',
+        scrollbarWidth: '1px',
         msOverflowStyle: 'none'
       }}>
       
