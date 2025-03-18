@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./FeatureRedux/testReducer/testReducer"; // Import reducer
-
+import deleteProject from './FeatureRedux/project/deleteProject'
+import counterReducer from './FeatureRedux/testReducer/testReducer'
 const store = configureStore({
   reducer: {
     counter: counterReducer,
+    deleteProject:deleteProject
   },
 });
 

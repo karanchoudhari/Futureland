@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { ChevronLeft, ChevronRight, Filter, X, Search, Edit, Trash2, ArrowUpDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useSelector , useDispatch } from "react-redux";
+import {deleteProject} from "../../FeatureRedux/project/deleteProject"
 
 const ProjectList = ({ onEditProject }) => {
   const [projectList, setProjectList] = useState([]);
@@ -14,6 +16,10 @@ const ProjectList = ({ onEditProject }) => {
   const itemsPerPage = 15;
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
+
+
+  const dispatch = useDispatch();
+    const { isLoading, isError, errorMessage } = useSelector((state) => state.deleteProject);
 
   // Fetch projects from the backend
   useEffect(() => {
@@ -35,7 +41,7 @@ const ProjectList = ({ onEditProject }) => {
 
   // Handle project click to navigate to detail page
   const handleProjectClick = (project) => {
-    navigate('/detail', { state: { project } }); // Pass the entire project object
+    navigate('/detail', { state: { project } }); 
   };
 
   // Handle edit icon click
@@ -161,10 +167,15 @@ const ProjectList = ({ onEditProject }) => {
 
 
 
-  const handledelete = async (e) => {
+  const handledelete = async (e , id) => {
     e.stopPropagation()
-    alert("djdiih")
+    dispatch(deleteProject(id))
+     
   }
+
+
+
+
 
   return (
     <div className="overflow-auto w-full h-[100vh] bg-white shadow-md rounded-md">
@@ -290,7 +301,7 @@ const ProjectList = ({ onEditProject }) => {
                   >
                     <Edit className="w-4 h-4" />
                   </button>
-                  <button className="text-red-500 hover:text-red-700" onClick={(e) => handledelete(e)} >
+                  <button className="text-red-500 hover:text-red-700" onClick={(e) => handledelete(e , item._id )} >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>, // Action buttons (pencil and trash icons)
