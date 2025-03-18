@@ -435,15 +435,153 @@
 
 
 
+// import React, { useState, useEffect } from 'react';
+// import { CheckCircle, X } from 'lucide-react';
+
+// const Addblogs = ({ onSubmit, onCancel, editIndex, blogs }) => {
+//   const [formData, setFormData] = useState({
+//     title: '',
+//     readTime: '',
+//     date: '',
+//     imageFile: null,
+//     link: '',
+//   });
+//   const [errors, setErrors] = useState({});
+
+//   useEffect(() => {
+//     if (editIndex !== null) {
+//       const blog = blogs[editIndex];
+//       setFormData({
+//         title: blog.title,
+//         readTime: blog.readTime,
+//         date: blog.date,
+//         imageFile: blog.imageFile,
+//         link: blog.link,
+//       });
+//     }
+//   }, [editIndex, blogs]);
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//     setErrors({ ...errors, [name]: '' });
+//   };
+
+//   const handleImageUpload = (e) => {
+//     const file = e.target.files[0];
+//     if (file && file.type.startsWith('image/')) {
+//       setFormData((prevData) => ({ ...prevData, imageFile: file }));
+//       setErrors((prevErrors) => ({ ...prevErrors, imageFile: '' }));
+//     } else {
+//       setErrors((prevErrors) => ({ ...prevErrors, imageFile: 'Please select a valid image file.' }));
+//     }
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     const newErrors = {};
+//     if (!formData.title) newErrors.title = true;
+//     if (!formData.readTime) newErrors.readTime = true;
+//     if (!formData.date) newErrors.date = true;
+//     if (!formData.imageFile) newErrors.imageFile = true;
+//     if (!formData.link) newErrors.link = true;
+
+//     setErrors(newErrors);
+
+//     if (Object.keys(newErrors).length > 0) {
+//       setTimeout(() => setErrors({}), 500);
+//       return;
+//     }
+
+//     const blog = {
+//       title: formData.title,
+//       readTime: formData.readTime,
+//       date: formData.date,
+//       image: URL.createObjectURL(formData.imageFile),
+//       link: formData.link,
+//     };
+
+//     onSubmit(blog, editIndex !== null);
+//   };
+
+//   return (
+//     <div className="flex flex-col items-center p-4">
+//       <div className="bg-white p-6 rounded-lg shadow-md">
+//         <h2 className="text-2xl font-bold text-center mb-4">{editIndex !== null ? 'Edit Blog' : 'Add Blog'}</h2>
+
+//         <form onSubmit={handleSubmit} className="space-y-4">
+//           <input
+//             type="text"
+//             placeholder="Title"
+//             name="title"
+//             value={formData.title}
+//             onChange={handleChange}
+//             className="w-full p-2 border rounded-md"
+//           />
+
+//           <input
+//             type="text"
+//             placeholder="Read Time"
+//             name="readTime"
+//             value={formData.readTime}
+//             onChange={handleChange}
+//             className="w-full p-2 border rounded-md"
+//           />
+
+//           <input
+//             type="date"
+//             name="date"
+//             value={formData.date}
+//             onChange={handleChange}
+//             className="w-full p-2 border rounded-md"
+//           />
+
+//           <input
+//             type="file"
+//             accept="image/*"
+//             onChange={handleImageUpload}
+//             className="w-full p-2 border rounded-md"
+//           />
+
+//           {formData.imageFile && (
+//             <p className="text-sm text-gray-600">Selected File: {formData.imageFile.name}</p>
+//           )}
+
+//           <input
+//             type="text"
+//             placeholder="Link"
+//             name="link"
+//             value={formData.link}
+//             onChange={handleChange}
+//             className="w-full p-2 border rounded-md"
+//           />
+
+//           <button
+//             type="submit"
+//             className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+//           >
+//             {editIndex !== null ? 'Update Blog' : 'Submit'}
+//           </button>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Addblogs;
+
+
+
+
+
 
 
 
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, Edit, Trash, X } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import Blogtable from './blogtable';
+import { CheckCircle, X } from 'lucide-react';
 
-const Addblogs = () => {
+const Addblogs = ({ onSubmit, onCancel, editIndex, blogs }) => {
   const [formData, setFormData] = useState({
     title: '',
     readTime: '',
@@ -452,16 +590,20 @@ const Addblogs = () => {
     link: '',
   });
   const [errors, setErrors] = useState({});
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [blogs, setBlogs] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
-  const navigate = useNavigate();
+  const [shake, setShake] = useState(false);
 
   useEffect(() => {
-    const storedBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-    setBlogs(storedBlogs);
-  }, []);
+    if (editIndex !== null) {
+      const blog = blogs[editIndex];
+      setFormData({
+        title: blog.title,
+        readTime: blog.readTime,
+        date: blog.date,
+        imageFile: blog.image, // Use the existing image URL
+        link: blog.link,
+      });
+    }
+  }, [editIndex, blogs]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -492,7 +634,8 @@ const Addblogs = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) {
-      setTimeout(() => setErrors({}), 500);
+      setShake(true);
+      setTimeout(() => setShake(false), 500); // Shake animation
       return;
     }
 
@@ -500,38 +643,88 @@ const Addblogs = () => {
       title: formData.title,
       readTime: formData.readTime,
       date: formData.date,
-      image: URL.createObjectURL(formData.imageFile),
+      image: typeof formData.imageFile === 'string' ? formData.imageFile : URL.createObjectURL(formData.imageFile), // Handle existing image URL
       link: formData.link,
+      imageFile: formData.imageFile, // Pass imageFile for future updates
     };
 
-    const existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-    if (editIndex !== null) {
-      existingBlogs[editIndex] = blog;
-      setShowUpdateModal(true);
-    } else {
-      existingBlogs.push(blog);
-      setShowSuccessModal(true);
-    }
-
-    localStorage.setItem('blogs', JSON.stringify(existingBlogs));
-    setBlogs(existingBlogs);
-    setFormData({ title: '', readTime: '', date: '', imageFile: null, link: '' });
-    setEditIndex(null);
+    onSubmit(blog, editIndex !== null);
   };
 
   return (
     <div className="flex flex-col items-center p-4">
-    
+      <div className="bg-white p-6 rounded-lg shadow-md w-full">
+        <h2 className="text-2xl font-bold text-center mb-4">{editIndex !== null ? 'Edit Blog' : 'Add Blog'}</h2>
 
-      <Blogtable
-        blogs={blogs}
-        handleEdit={(index) => setEditIndex(index)}
-        handleDelete={(index) => setBlogs(blogs.filter((_, i) => i !== index))}
-        showSuccessModal={showSuccessModal}
-        showUpdateModal={showUpdateModal}
-        closeSuccessModal={() => setShowSuccessModal(false)}
-        closeUpdateModal={() => setShowUpdateModal(false)}
-      />
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Title"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            className={`w-full p-2 border rounded-md ${errors.title ? 'border-red-500 animate-shake' : ''}`}
+          />
+
+          <input
+            type="text"
+            placeholder="Read Time"
+            name="readTime"
+            value={formData.readTime}
+            onChange={handleChange}
+            className={`w-full p-2 border rounded-md ${errors.readTime ? 'border-red-500 animate-shake' : ''}`}
+          />
+
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            className={`w-full p-2 border rounded-md ${errors.date ? 'border-red-500 animate-shake' : ''}`}
+          />
+
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className={`w-full p-2 border rounded-md ${errors.imageFile ? 'border-red-500 animate-shake' : ''}`}
+          />
+
+          {formData.imageFile && (
+            <p className="text-sm text-gray-600">Selected File: {formData.imageFile.name || 'Existing Image'}</p>
+          )}
+
+          <input
+            type="text"
+            placeholder="Link"
+            name="link"
+            value={formData.link}
+            onChange={handleChange}
+            className={`w-full p-2 border rounded-md ${errors.link ? 'border-red-500 animate-shake' : ''}`}
+          />
+
+          <button
+            type="submit"
+            className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          >
+            {editIndex !== null ? 'Update Blog' : 'Submit'}
+          </button>
+        </form>
+      </div>
+      <style>
+        {`
+          @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+          }
+          .animate-shake {
+            animation: shake 0.3s ease-in-out;
+          }
+        `}
+      </style>
     </div>
   );
 };

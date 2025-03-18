@@ -218,6 +218,157 @@
 
 
 
+// import React, { useState, useEffect, useRef } from "react";
+// import { DownloadIcon, Upload } from 'lucide-react';
+
+// const Blog = () => {
+//   const [articles, setArticles] = useState([]);
+//   const [uploadedFile, setUploadedFile] = useState(null);
+//   const [fileUrl, setFileUrl] = useState(null);
+//   const scrollContainerRef = useRef(null);
+//   const scrollIntervalRef = useRef(null);
+
+//   useEffect(() => {
+//     // Fetch blogs from localStorage
+//     const storedBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
+//     setArticles(storedBlogs);
+//   }, []);
+
+//   const handleFileUpload = (event) => {
+//     const file = event.target.files[0];
+//     if (file && file.type === "application/pdf") {
+//       setUploadedFile(file);
+//       const fileUrl = URL.createObjectURL(file);
+//       setFileUrl(fileUrl);
+//       alert("PDF uploaded successfully!");
+//     } else {
+//       alert("Please upload a valid PDF file.");
+//     }
+//   };
+
+//   const loadMoreArticles = () => {
+//     const storedBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
+//     setArticles((prevArticles) => [...prevArticles, ...storedBlogs]);
+//   };
+
+//   const startAutoScroll = () => {
+//     const scrollContainer = scrollContainerRef.current;
+//     scrollIntervalRef.current = setInterval(() => {
+//       if (
+//         scrollContainer.scrollTop + scrollContainer.clientHeight >=
+//         scrollContainer.scrollHeight - 10
+//       ) {
+//         loadMoreArticles();
+//       } else {
+//         scrollContainer.scrollTop += 2;
+//       }
+//     }, 100);
+//   };
+
+//   const stopAutoScroll = () => {
+//     clearInterval(scrollIntervalRef.current);
+//   };
+
+//   useEffect(() => {
+//     startAutoScroll();
+
+//     const scrollContainer = scrollContainerRef.current;
+//     scrollContainer.addEventListener('mouseenter', stopAutoScroll);
+//     scrollContainer.addEventListener('mouseleave', startAutoScroll);
+
+//     return () => {
+//       stopAutoScroll();
+//       scrollContainer.removeEventListener('mouseenter', stopAutoScroll);
+//       scrollContainer.removeEventListener('mouseleave', startAutoScroll);
+//     };
+//   }, []);
+
+//   return (
+//     <div className="bg-gray-900 p-6 pt-0 rounded-lg shadow-lg w-full max-w-2xl">
+//       <div className="flex items-center justify-between mb-4">
+//         <h2 className="text-lg font-bold text-white uppercase">Infrastructure</h2>
+//         <div className="flex items-center gap-2 mt-2">
+//           {uploadedFile && (
+//             <span className="text-sm text-white flex bg-green-500 px-4 py-2 rounded">
+//               {/* <a
+//                 href={fileUrl}
+//                 download={uploadedFile.name}
+//                 className="text-white hover:text-gray-200 flex justify-between"
+//               >
+//                 Download Doc <DownloadIcon size={20} />
+//               </a> */}
+//             </span>
+//           )}
+//           <label className="cursor-pointer flex justify-between align-center bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+//             <Upload size={20} /> Upload Doc
+//             <input
+//               type="file"
+//               accept="application/pdf"
+//               onChange={handleFileUpload}
+//               className="hidden"
+//             />
+//           </label>
+//         </div>
+//       </div>
+//       <div
+//         ref={scrollContainerRef}
+//         className="flex flex-col gap-4 h-64 overflow-y-auto scroll-smooth hide-scrollbar"
+//       >
+//         {articles.map((article, index) => (
+//           <div
+//             key={index}
+//             className="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow-md"
+//           >
+//             <div className="flex-1 pr-4">
+//               <h3 className="text-md font-semibold text-gray-800 hover:text-blue-600 cursor-pointer">
+//                 {article.title}
+//               </h3>
+//               <p className="text-sm text-gray-500 mt-1">
+//                 {article.readTime} • {article.date}
+//               </p>
+//             </div>
+//             <img
+//               src={article.image}
+//               alt="Thumbnail"
+//               className="w-20 h-16 object-cover rounded-lg"
+//             />
+//           </div>
+//         ))}
+//       </div>
+//       <style>
+//         {`
+//           .hide-scrollbar {
+//             scrollbar-width: none; /* Firefox */
+//             -ms-overflow-style: none; /* IE and Edge */
+//           }
+//           .hide-scrollbar::-webkit-scrollbar {
+//             display: none; /* Chrome, Safari, and Opera */
+//           }
+//         `}
+//       </style>
+//     </div>
+//   );
+// };
+
+// export default Blog;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect, useRef } from "react";
 import { DownloadIcon, Upload } from 'lucide-react';
 
@@ -290,13 +441,13 @@ const Blog = () => {
         <div className="flex items-center gap-2 mt-2">
           {uploadedFile && (
             <span className="text-sm text-white flex bg-green-500 px-4 py-2 rounded">
-              <a
+              {/* <a
                 href={fileUrl}
                 download={uploadedFile.name}
                 className="text-white hover:text-gray-200 flex justify-between"
               >
                 Download Doc <DownloadIcon size={20} />
-              </a>
+              </a> */}
             </span>
           )}
           <label className="cursor-pointer flex justify-between align-center bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
@@ -320,9 +471,14 @@ const Blog = () => {
             className="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow-md"
           >
             <div className="flex-1 pr-4">
-              <h3 className="text-md font-semibold text-gray-800 hover:text-blue-600 cursor-pointer">
+              <a
+                href={article.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-md font-semibold text-gray-800 hover:text-blue-600 cursor-pointer"
+              >
                 {article.title}
-              </h3>
+              </a>
               <p className="text-sm text-gray-500 mt-1">
                 {article.readTime} • {article.date}
               </p>

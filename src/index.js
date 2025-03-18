@@ -18,6 +18,7 @@ import UserProfile from './Component/UserProfile/userprofile';
 import Login from './Component/Loginpage/login';
 import Addblogs  from './Component/Management/Blog/blogadd'
 import Addgraph from './Component/Overview/addgraph';
+import Blogfront from './Component/Management/Blog/blogfront';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path:'/add-blogs',
         element:<Addblogs/>,
+      },
+      {
+        path:'/Blogfront',
+        element:<Blogfront/>,
       },
       {
         path:'/addgraph',

@@ -17,8 +17,8 @@ const AddProject1 = ({ editingProject, onClose }) => {
     country: "",
     state: "",
     city: "",
-    start: null,
-    finish: null,
+    startDate: null,
+    endDate: null,
     contractor: "",
     kmlFile: null,
     documentFile: null,
@@ -41,8 +41,8 @@ const AddProject1 = ({ editingProject, onClose }) => {
     if (editingProject) {
       setFormData({
         ...editingProject,
-        start: editingProject.start ? new Date(editingProject.start) : null,
-        finish: editingProject.finish ? new Date(editingProject.finish) : null,
+        startDate: editingProject.startDate ? new Date(editingProject.startDate) : null,
+        endDate: editingProject.endDate ? new Date(editingProject.endDate) : null,
       });
     }
   }, [editingProject]);
@@ -116,30 +116,38 @@ const AddProject1 = ({ editingProject, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Check for empty fields
     const emptyFields = Object.entries(formData)
       .filter(([key, value]) => {
-        if (key === "start" || key === "finish") {
+        if (key === "startDate" || key === "endDate") {
           return value === null;
         }
         return value === "";
       })
       .map(([key]) => key);
-
+  
     if (emptyFields.length > 0) {
       setShakeFields(emptyFields); // Set fields to shake
       setTimeout(() => setShakeFields([]), 500); // Reset shake after 500ms
       return;
     }
-
+  
     try {
       const payload = {
-        ...formData,
-        start: formData.start?.toISOString().split("T")[0],
-        finish: formData.finish?.toISOString().split("T")[0],
+        projectname: formData.project_name, // Map project_name to projectname
+        sector: formData.sector,
+        cost: formData.cost,
+        stages: formData.status, // Map status to stages
+        country: formData.country,
+        state: formData.state,
+        city: formData.city,
+        startDate: formData.startDate?.toISOString().split("T")[0],
+        endDate: formData.endDate?.toISOString().split("T")[0],
+        contractor: formData.contractor,
+        kml: formData.kmlFile ? [{ url: "https://example.com/kml-file-url" }] : [], // Mock URL for testing
       };
-
+  
       if (editingProject) {
         // Update project
         const response = await axios.put(
@@ -482,9 +490,9 @@ const AddProject1 = ({ editingProject, onClose }) => {
                 fullWidth
                 size="small"
                 InputLabelProps={{ shrink: true }}
-                name="start"
-                value={formData.start ? formData.start.toISOString().split('T')[0] : ""}
-                onChange={(e) => handleDateChange(new Date(e.target.value), "start")}
+                name="startDate"
+                value={formData.startDate ? formData.startDate.toISOString().split('T')[0] : ""}
+                onChange={(e) => handleDateChange(new Date(e.target.value), "startDate")}
                 variant="outlined"
                 className={shouldShake("start")}
                 sx={{
@@ -508,9 +516,9 @@ const AddProject1 = ({ editingProject, onClose }) => {
                 fullWidth
                 size="small"
                 InputLabelProps={{ shrink: true }}
-                name="finish"
-                value={formData.finish ? formData.finish.toISOString().split('T')[0] : ""}
-                onChange={(e) => handleDateChange(new Date(e.target.value), "finish")}
+                name="endDate"
+                value={formData.endDate ? formData.endDate.toISOString().split('T')[0] : ""}
+                onChange={(e) => handleDateChange(new Date(e.target.value), "endDate")}
                 variant="outlined"
                 className={shouldShake("finish")}
                 sx={{
