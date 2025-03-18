@@ -291,7 +291,7 @@ const Blogtable = ({ blogs, handleEdit, handleDelete, showSuccessModal, showUpda
             <div className="flex flex-col items-center">
               <CheckCircle className="w-12 h-12 text-green-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Congratulations!</h2>
-              <p className="text-gray-600 text-center">Your project has been successfully submitted.</p>
+              <p className="text-gray-600 text-center">Your Blog has been successfully Added.</p>
             </div>
           </div>
         </div>
@@ -307,7 +307,7 @@ const Blogtable = ({ blogs, handleEdit, handleDelete, showSuccessModal, showUpda
             <div className="flex flex-col items-center">
               <Edit className="w-12 h-12 text-blue-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Successfully Updated!</h2>
-              <p className="text-gray-600 text-center">Your project has been successfully updated.</p>
+              <p className="text-gray-600 text-center">Your Blog has been successfully updated.</p>
             </div>
           </div>
         </div>

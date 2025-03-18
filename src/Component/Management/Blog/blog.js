@@ -363,12 +363,6 @@
 
 
 
-
-
-
-
-
-
 import React, { useState, useEffect, useRef } from "react";
 import { DownloadIcon, Upload } from 'lucide-react';
 
@@ -477,7 +471,9 @@ const Blog = () => {
                 rel="noopener noreferrer"
                 className="text-md font-semibold text-gray-800 hover:text-blue-600 cursor-pointer"
               >
-                {article.title}
+                {article.title.length > 50
+                  ? `${article.title.substring(0, 50)}... Read More`
+                  : article.title}
               </a>
               <p className="text-sm text-gray-500 mt-1">
                 {article.readTime} • {article.date}
