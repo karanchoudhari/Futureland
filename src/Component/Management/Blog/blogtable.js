@@ -231,67 +231,158 @@
 
 
 
+// import React from 'react';
+// import { Edit, Trash, CheckCircle, X } from 'lucide-react';
+
+// const Blogtable = ({ blogs, handleEdit, handleDelete, showSuccessModal, showUpdateModal, closeSuccessModal, closeUpdateModal }) => {
+//   return (
+//     <div className="p-6">
+//       <table className="w-full border-collapse">
+//         <thead>
+//           <tr className="bg-gray-200">
+//             <th className="p-3 text-left">Title</th>
+//             <th className="p-3 text-left">Read Time</th>
+//             <th className="p-3 text-left">Date</th>
+//             <th className="p-3 text-left">Image</th>
+//             <th className="p-3 text-left">Link</th>
+//             <th className="p-3 text-left">Actions</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {blogs.map((blog, index) => (
+//             <tr key={index} className="border-b hover:bg-gray-50">
+//               <td className="p-3">
+//                 <a href={blog.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+//                   {blog.title}
+//                 </a>
+//               </td>
+//               <td className="p-3">{blog.readTime}</td>
+//               <td className="p-3">{blog.date}</td>
+//               <td className="p-3">
+//                 <img src={blog.image} alt="Blog" className="w-20 h-16 object-cover rounded-lg" />
+//               </td>
+//               <td className="p-3">
+//                 <a href={blog.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+//                   {blog.link}
+//                 </a>
+//               </td>
+//               <td className="p-3">
+//                 <div className="flex space-x-4">
+//                   <button onClick={() => handleEdit(index)} className="text-blue-500 hover:text-blue-700">
+//                     <Edit className="w-5 h-5" />
+//                   </button>
+//                   <button onClick={() => handleDelete(index)} className="text-red-500 hover:text-red-700">
+//                     <Trash className="w-5 h-5" />
+//                   </button>
+//                 </div>
+//               </td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+
+//       {/* Success Modal */}
+//       {showSuccessModal && (
+//         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+//           <div className="bg-white rounded-lg p-8 w-96 relative">
+//             <button onClick={closeSuccessModal} className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
+//               <X className="w-6 h-6" />
+//             </button>
+//             <div className="flex flex-col items-center">
+//               <CheckCircle className="w-12 h-12 text-green-500 mb-4" />
+//               <h2 className="text-2xl font-bold mb-2">Congratulations!</h2>
+//               <p className="text-gray-600 text-center">Your Blog has been successfully Added.</p>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+
+//       {/* Update Modal */}
+//       {showUpdateModal && (
+//         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+//           <div className="bg-white rounded-lg p-8 w-96 relative">
+//             <button onClick={closeUpdateModal} className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
+//               <X className="w-6 h-6" />
+//             </button>
+//             <div className="flex flex-col items-center">
+//               <Edit className="w-12 h-12 text-blue-500 mb-4" />
+//               <h2 className="text-2xl font-bold mb-2">Successfully Updated!</h2>
+//               <p className="text-gray-600 text-center">Your Blog has been successfully updated.</p>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Blogtable;
+
+
+
 import React from 'react';
 import { Edit, Trash, CheckCircle, X } from 'lucide-react';
 
 const Blogtable = ({ blogs, handleEdit, handleDelete, showSuccessModal, showUpdateModal, closeSuccessModal, closeUpdateModal }) => {
   return (
-    <div className="p-6">
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="p-3 text-left">Title</th>
-            <th className="p-3 text-left">Read Time</th>
-            <th className="p-3 text-left">Date</th>
-            <th className="p-3 text-left">Image</th>
-            <th className="p-3 text-left">Link</th>
-            <th className="p-3 text-left">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {blogs.map((blog, index) => (
-            <tr key={index} className="border-b hover:bg-gray-50">
-              <td className="p-3">
-                <a href={blog.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                  {blog.title}
-                </a>
-              </td>
-              <td className="p-3">{blog.readTime}</td>
-              <td className="p-3">{blog.date}</td>
-              <td className="p-3">
-                <img src={blog.image} alt="Blog" className="w-20 h-16 object-cover rounded-lg" />
-              </td>
-              <td className="p-3">
-                <a href={blog.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                  {blog.link}
-                </a>
-              </td>
-              <td className="p-3">
-                <div className="flex space-x-4">
-                  <button onClick={() => handleEdit(index)} className="text-blue-500 hover:text-blue-700">
-                    <Edit className="w-5 h-5" />
-                  </button>
-                  <button onClick={() => handleDelete(index)} className="text-red-500 hover:text-red-700">
-                    <Trash className="w-5 h-5" />
-                  </button>
-                </div>
-              </td>
+    <div className="p-6 bg-white shadow-lg rounded-xl">
+      <div className="overflow-x-auto">
+        <table className="min-w-full border border-gray-300 rounded-lg shadow-md">
+          <thead>
+            <tr className="bg-gray-100 text-gray-700 text-left">
+              <th className="px-6 py-3 border">Title</th>
+              <th className="px-6 py-3 border">Read Time</th>
+              <th className="px-6 py-3 border">Date</th>
+              <th className="px-6 py-3 border">Image</th>
+              <th className="px-6 py-3 border">Link</th>
+              <th className="px-6 py-3 border">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {blogs.map((blog, index) => (
+              <tr key={index} className="border hover:bg-gray-100">
+                <td className="px-6 py-3 border">
+                  <a href={blog.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                    {blog.title}
+                  </a>
+                </td>
+                <td className="px-6 py-3 border text-gray-600">{blog.readTime}</td>
+                <td className="px-6 py-3 border text-gray-600">{blog.date}</td>
+                <td className="px-6 py-3 border">
+                  <img src={blog.image} alt="Blog" className="w-20 h-16 object-cover rounded-md border border-gray-300" />
+                </td>
+                <td className="px-6 py-3 border">
+                  <a href={blog.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                    {blog.link}
+                  </a>
+                </td>
+                <td className="px-6 py-3 border">
+                  <div className="flex space-x-3">
+                    <button onClick={() => handleEdit(index)} className="text-green-500 hover:text-green-700">
+                      <Edit className="w-5 h-5" />
+                    </button>
+                    <button onClick={() => handleDelete(index)} className="text-red-500 hover:text-red-700">
+                      <Trash className="w-5 h-5" />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Success Modal */}
       {showSuccessModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 w-96 relative">
-            <button onClick={closeSuccessModal} className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 w-96 relative shadow-xl">
+            <button onClick={closeSuccessModal} className="absolute top-3 right-3 p-2 hover:bg-gray-100 rounded-full">
               <X className="w-6 h-6" />
             </button>
             <div className="flex flex-col items-center">
               <CheckCircle className="w-12 h-12 text-green-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Congratulations!</h2>
-              <p className="text-gray-600 text-center">Your Blog has been successfully Added.</p>
+              <p className="text-gray-500 text-center">Your Blog has been successfully Added.</p>
             </div>
           </div>
         </div>
@@ -299,15 +390,15 @@ const Blogtable = ({ blogs, handleEdit, handleDelete, showSuccessModal, showUpda
 
       {/* Update Modal */}
       {showUpdateModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 w-96 relative">
-            <button onClick={closeUpdateModal} className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 w-96 relative shadow-xl">
+            <button onClick={closeUpdateModal} className="absolute top-3 right-3 p-2 hover:bg-gray-100 rounded-full">
               <X className="w-6 h-6" />
             </button>
             <div className="flex flex-col items-center">
               <Edit className="w-12 h-12 text-blue-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Successfully Updated!</h2>
-              <p className="text-gray-600 text-center">Your Blog has been successfully updated.</p>
+              <p className="text-gray-500 text-center">Your Blog has been successfully updated.</p>
             </div>
           </div>
         </div>

@@ -217,7 +217,7 @@ const Management = () => {
 
   // Handle "Graph Manage" button click
   const handleGraphManageClick = () => {
-    navigate('/addgraph'); // Add your logic here
+    navigate('/graphfront'); // Add your logic here
   };
 
   return (

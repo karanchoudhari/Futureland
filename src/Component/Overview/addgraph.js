@@ -139,138 +139,58 @@
 
 // export default AddGraph;
 
+import React, { useState } from 'react';
 
-// import React, { useState, useEffect } from 'react';
-
-// const Addgraph = ({ onSubmit, formData, onCancel }) => {
-//   const [sector, setSector] = useState('');
-//   const [cost, setCost] = useState('');
-
-//   useEffect(() => {
-//     if (formData) {
-//       setSector(formData.sector);
-//       setCost(formData.cost);
-//     }
-//   }, [formData]);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     onSubmit({ id: formData?.id, sector, cost: parseFloat(cost) });
-//   };
-
-//   return (
-//     <div className="bg-white p-6 rounded-lg shadow-lg">
-//       <h2 className="text-xl font-bold mb-4">{formData ? 'Edit Sector' : 'Add Sector'}</h2>
-//       <form onSubmit={handleSubmit}>
-//         <div className="mb-4">
-//           <label className="block text-sm font-medium mb-1">Sector:</label>
-//           <input
-//             type="text"
-//             value={sector}
-//             onChange={(e) => setSector(e.target.value)}
-//             className="w-full p-2 border rounded-lg"
-//             required
-//           />
-//         </div>
-//         <div className="mb-4">
-//           <label className="block text-sm font-medium mb-1">Cost (in billions):</label>
-//           <input
-//             type="number"
-//             value={cost}
-//             onChange={(e) => setCost(e.target.value)}
-//             className="w-full p-2 border rounded-lg"
-//             required
-//           />
-//         </div>
-//         <div className="flex gap-2">
-//           <button
-//             type="submit"
-//             className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-//           >
-//             {formData ? 'Update' : 'Submit'}
-//           </button>
-//           <button
-//             type="button"
-//             onClick={onCancel}
-//             className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
-//           >
-//             Cancel
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Addgraph;
-
-
-
-
-
-
-
-
-import React, { useState, useEffect } from 'react';
-
-const Addgraph = ({ onSubmit, formData, onCancel }) => {
-  const [sector, setSector] = useState('');
-  const [cost, setCost] = useState('');
-
-  useEffect(() => {
-    if (formData) {
-      setSector(formData.sector);
-      setCost(formData.cost);
-    }
-  }, [formData]);
+const GraphAddForm = ({ onAdd, onClose }) => {
+  const [newSector, setNewSector] = useState('');
+  const [newCost, setNewCost] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ id: formData?.id, sector, cost: parseFloat(cost) });
+    if (newSector && newCost) {
+      onAdd(newSector, newCost);
+      setNewSector('');
+      setNewCost('');
+    }
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-xl font-bold mb-4">{formData ? 'Edit Sector' : 'Add Sector'}</h2>
+    <div className="fixed top-0 right-0 h-full w-80 bg-gray-800 p-6 shadow-2xl text-white">
+      <button
+        className="absolute top-3 right-3 text-white hover:text-gray-400 transition duration-300"
+        onClick={onClose}
+      >
+        ✕
+      </button>
+      <h3 className="text-xl font-bold mb-6">Add New Sector</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Sector:</label>
+          <label className="block mb-2">Sector:</label>
           <input
             type="text"
-            value={sector}
-            onChange={(e) => setSector(e.target.value)}
-            className="w-full p-2 border rounded-lg"
-            required
+            value={newSector}
+            onChange={(e) => setNewSector(e.target.value)}
+            className="w-full p-2 bg-gray-700 rounded text-white"
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Cost (in billions):</label>
+        <div className="mb-6">
+          <label className="block mb-2">Cost (in billions):</label>
           <input
             type="number"
-            value={cost}
-            onChange={(e) => setCost(e.target.value)}
-            className="w-full p-2 border rounded-lg"
-            required
+            value={newCost}
+            onChange={(e) => setNewCost(e.target.value)}
+            className="w-full p-2 bg-gray-700 rounded text-white"
           />
         </div>
-        <div className="flex gap-2">
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-          >
-            {formData ? 'Update' : 'Submit'}
-          </button>
-          <button
-            type="button"
-            onClick={onCancel}
-            className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
-          >
-            Cancel
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="w-full p-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+        >
+          Add
+        </button>
       </form>
     </div>
   );
 };
 
-export default Addgraph;
+export default GraphAddForm;

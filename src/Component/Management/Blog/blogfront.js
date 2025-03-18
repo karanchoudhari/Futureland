@@ -97,7 +97,7 @@
 
 
 import React, { useState } from 'react';
-import { Plus,X } from 'lucide-react';
+import { Plus,X ,ChevronLeft} from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Addblogs from './blogadd';
@@ -148,11 +148,18 @@ const Blogfront = () => {
   return (
     <div className="flex flex-col h-screen bg-gray-100 p-6">
       {/* Header with Add Blog Button */}
+        <h1 className="text-2xl font-bold text-gray-800 text-center">Blog List</h1>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Blog List</h1>
+      <button
+            onClick={() => window.history.back()}
+            className="flex items-center text-gray-800 hover:text-gray-600"
+          >
+            <ChevronLeft className="w-6 h-6 mr-2" />
+            Back
+          </button>
         <button
           onClick={handleAddBlog}
-          className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-all"
+          className="flex items-center text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-all"
         >
           <Plus className="w-5 h-5 mr-2" />
           Add Blog
