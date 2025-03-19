@@ -238,12 +238,12 @@ const Management = () => {
           >
             Add Blog
           </button>
-          <button
+          {/* <button
             onClick={handleGraphManageClick}
             className="px-6 py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700"
           >
             Graph Manage
-          </button>
+          </button> */}
         </div>
 
         <div style={{ padding: '50px', borderRadius: '8px', boxShadow: '0px 4px 6px rgba(0, 0, 0, 1)' }}>
