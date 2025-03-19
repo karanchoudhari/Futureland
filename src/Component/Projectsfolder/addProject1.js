@@ -135,7 +135,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
   
     try {
       const payload = {
-        projectname: formData.project_name, // Map project_name to projectname
+        project_name: formData.project_name, // Map project_name to projectname
         sector: formData.sector,
         cost: formData.cost,
         status: formData.status, // Map status to stages
