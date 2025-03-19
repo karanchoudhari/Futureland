@@ -138,7 +138,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
         projectname: formData.project_name, // Map project_name to projectname
         sector: formData.sector,
         cost: formData.cost,
-        stages: formData.status, // Map status to stages
+        status: formData.status, // Map status to stages
         country: formData.country,
         state: formData.state,
         city: formData.city,
@@ -151,12 +151,13 @@ const AddProject1 = ({ editingProject, onClose }) => {
       if (editingProject) {
         // Update project
         const response = await axios.put(
-          `http://localhost:3002/api/project/updateProject/${editingProject._id}`,
+          `http://localhost:3002/api/project/updateProject`,
           payload,
           {
             headers: {
               'x-company-id': companyId,
               'Content-Type': 'application/json',
+              'x-project-id':  editingProject._id
             },
           }
         );
