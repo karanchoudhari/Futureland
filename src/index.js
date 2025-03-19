@@ -127,7 +127,7 @@ import AddProject1 from './Component/Projectsfolder/addProject1';
 import UserProfile from './Component/UserProfile/userprofile';
 import Login from './Component/Loginpage/login';
 import Addblogs from './Component/Management/Blog/blogadd';
-import Addgraph from './Component/Overview/addgraph';
+// import Addgraph from './Component/Overview/addgraph';
 import Blogfront from './Component/Management/Blog/blogfront';
 import Graphfront from './Component/Overview/graphfront';
 
