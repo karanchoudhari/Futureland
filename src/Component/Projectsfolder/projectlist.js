@@ -291,8 +291,8 @@ const ProjectList = ({ onEditProject }) => {
                 getShortName(item.country), // Short name for country
                 getShortName(item.state), // Short name for state
                 getShortName(item.city), // Short name for city
-                item.start,
-                item.finish,
+                item.startDate,
+                item.endDate,
                 item.contractor,
                 <div key="action" className="flex space-x-2 items-center justify-center">
                   <button
