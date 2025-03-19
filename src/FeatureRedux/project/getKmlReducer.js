@@ -4,13 +4,13 @@ import Cookies from 'js-cookie'
 import axiosInstance from "../../Component/axiosInstance";
 
 
-const getallkml = createAsyncThunk('display', async (ffss, { rejectWithValue }) => {
+const getallkml = createAsyncThunk('display', async (projectid, { rejectWithValue }) => {
     try {
         const response = await axiosInstance.get(`/project/getKml`, {
             headers: {
                 'x-auth-token': localStorage.getItem('token'),
                 'x-report-id': Cookies.get('reportId'),
-                'x-project-id':"67da9ad56c063a4b2f3974be"
+                'x-project-id':projectid
             }
         });
         return response.data;
