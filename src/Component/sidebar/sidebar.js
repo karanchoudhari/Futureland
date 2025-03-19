@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { UserCircle2Icon, Home, Settings, MapPinIcon, LucidePlus, OutdentIcon } from 'lucide-react';
+import { UserCircle2Icon, Home, Settings, MapPinIcon, LucidePlus, OutdentIcon,ListPlus,Projector,LucideProjector } from 'lucide-react';
 
 const Sidebar = () => {
 
@@ -45,8 +45,8 @@ const Sidebar = () => {
 
 
                 <Link to="/addProject" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
-                <LucidePlus size={20} />
-                    <span>Add-Project</span>
+                <ListPlus size={20} />
+                    <span>Projects</span>
                 </Link>
               
                 <Link to="/overview" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">

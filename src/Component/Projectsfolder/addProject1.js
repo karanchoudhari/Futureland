@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Country, State, City } from "country-state-city";
 import { Plus, Upload, X, CheckCircle, Trash, Edit, FilePlus, MapPinned } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { TextField, MenuItem, Button, Box, Typography, Grid, Paper, Divider, IconButton } from '@mui/material';
+import { TextField, MenuItem, Button, Box, Typography, Grid, Paper, Divider, IconButton,InputAdornment } from '@mui/material';
 
 const AddProject1 = ({ editingProject, onClose }) => {
   const [formData, setFormData] = useState({
@@ -20,6 +20,10 @@ const AddProject1 = ({ editingProject, onClose }) => {
     startDate: null,
     endDate: null,
     contractor: "",
+    districtMagistrate:'',
+    population:'',
+    registrarOffice:'',
+    circleRate:'',
     kmlFile: null,
     documentFile: null,
   });
@@ -135,7 +139,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
   
     try {
       const payload = {
-        projectname: formData.project_name, // Map project_name to projectname
+        project_name: formData.project_name, // Map project_name to projectname
         sector: formData.sector,
         cost: formData.cost,
         status: formData.status, // Map status to stages
@@ -145,7 +149,11 @@ const AddProject1 = ({ editingProject, onClose }) => {
         startDate: formData.startDate?.toISOString().split("T")[0],
         endDate: formData.endDate?.toISOString().split("T")[0],
         contractor: formData.contractor,
-        kml: formData.kmlFile ? [{ url: "https://example.com/kml-file-url" }] : [], // Mock URL for testing
+        districtMagistrate:formData.districtMagistrate,
+        population:formData.population,
+        registrarOffice:formData.registrarOffice,
+        circleRate:formData.circleRate,
+        // kml: formData.kmlFile ? [{ url: "https://example.com/kml-file-url" }] : [], // Mock URL for testing
       };
   
       if (editingProject) {
@@ -482,6 +490,103 @@ const AddProject1 = ({ editingProject, onClose }) => {
                 }}
               />
             </Grid>
+
+            {/* districtMagistrate */}
+            <Grid item xs={12} md={6}>
+              <TextField
+                label="DistrictMagistrate"
+                fullWidth
+                size="small"
+                name="districtMagistrate"
+                value={formData.districtMagistrate}
+                onChange={handleChange}
+                variant="outlined"
+                className={shouldShake("districtMagistrate")}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '&.animate-shake fieldset': {
+                      borderColor: 'red',
+                    },
+                  },
+                }}
+                InputProps={{
+                  className: shouldShake("districtMagistrate"),
+                }}
+              />
+            </Grid>
+            {/* population */}
+            <Grid item xs={12} md={6}>
+              <TextField
+                label="Population"
+                fullWidth
+                size="small"
+                type="number"
+                name="population"
+                value={formData.population}
+                onChange={handleChange}
+                variant="outlined"
+                className={shouldShake("population")}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '&.animate-shake fieldset': {
+                      borderColor: 'red',
+                    },
+                  },
+                }}
+                InputProps={{
+                  className: shouldShake("population"),
+                }}
+              />
+            </Grid>
+            {/* registrarOffice */}
+            <Grid item xs={12} md={6}>
+              <TextField
+                label="RegistrarOffice"
+                fullWidth
+                size="small"
+                name="registrarOffice"
+                value={formData.registrarOffice}
+                onChange={handleChange}
+                variant="outlined"
+                className={shouldShake("registrarOffice")}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '&.animate-shake fieldset': {
+                      borderColor: 'red',
+                    },
+                  },
+                }}
+                InputProps={{
+                  className: shouldShake("registrarOffice"),
+                }}
+              />
+            </Grid>
+            {/* circleRate */}
+            <Grid item xs={12} md={6}>
+              <TextField
+                label="CircleRate (INR)"
+                fullWidth
+                size="small"
+                name="circleRate"
+                type="number"
+                value={formData.circleRate}
+                onChange={handleChange}
+                variant="outlined"
+                className={shouldShake("circleRate")}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '&.animate-shake fieldset': {
+                      borderColor: 'red',
+                    },
+                  },
+                }}
+                InputProps={{
+                  className: shouldShake("circleRate"),
+                }}
+              />
+            </Grid>
+         
+
 
             {/* Start Date */}
             <Grid item xs={12} md={6}>
