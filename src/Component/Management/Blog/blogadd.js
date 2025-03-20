@@ -638,17 +638,17 @@ const Addblogs = ({ onSubmit, onCancel, editIndex, blogs }) => {
       setTimeout(() => setShake(false), 500); // Shake animation
       return;
     }
+    
+    // const blog = {
+    //   title: formData.title,
+    //   readTime: formData.readTime,
+    //   date: formData.date,
+    //   image: typeof formData.imageFile === 'string' ? formData.imageFile : URL.createObjectURL(formData.imageFile), // Handle existing image URL
+    //   link: formData.link,
+    //   imageFile: formData.imageFile, // Pass imageFile for future updates
+    // };
 
-    const blog = {
-      title: formData.title,
-      readTime: formData.readTime,
-      date: formData.date,
-      image: typeof formData.imageFile === 'string' ? formData.imageFile : URL.createObjectURL(formData.imageFile), // Handle existing image URL
-      link: formData.link,
-      imageFile: formData.imageFile, // Pass imageFile for future updates
-    };
-
-    onSubmit(blog, editIndex !== null);
+    // onSubmit(blog, editIndex !== null);
   };
 
   return (
