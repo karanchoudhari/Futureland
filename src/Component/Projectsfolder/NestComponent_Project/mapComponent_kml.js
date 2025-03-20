@@ -8,7 +8,7 @@ import { DOMParser } from "xmldom";
 import Cookies from 'js-cookie';
 import axios from "axios";
 
-const MapComponent = ({ kmlColor, kmlOpacity }) => {
+const MapComponent = ({ kmlColor, kmlOpacity , projectid }) => {
   const dispatch = useDispatch();
   const mapRef = useRef(null);
 
@@ -29,7 +29,9 @@ const MapComponent = ({ kmlColor, kmlOpacity }) => {
 //   console.log(`this is kml data ${JSON.stringify(kmlData)}`);
 
   useEffect(() => {
-    dispatch(getallkml());
+    console.log(`this is project id in map ${projectid}`);
+    
+    dispatch(getallkml(projectid));
   }, [dispatch]);
 
   useEffect(() => {

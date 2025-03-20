@@ -60,16 +60,16 @@ const Addproject = () => {
         onClick={handleCloseForm}
         >
           <div
-            className="bg-white rounded-lg p-8 w-11/12 max-w-3xl relative"
+            className=" rounded-lg p-8 w-11/12 max-w-3xl "
             onClick={(e) => e.stopPropagation()}
             data-aos="fade-left"
             >
-            <button
+            {/* <button
               onClick={handleCloseForm}
               className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full"
               >
               <X className="w-6 h-6" />
-            </button>
+            </button> */}
             <AddProject1
               editingProject={editingProject}
               onClose={handleCloseForm}
