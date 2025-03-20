@@ -294,8 +294,8 @@ const GraphTable = () => {
             onClick={() => window.history.back()}
             className="flex items-center text-gray-800 hover:text-gray-600"
           >
-            <ChevronLeft className="w-6 h-6 mr-2" />
-            Back
+            {/* <ChevronLeft className="w-6 h-6 mr-2" /> */}
+            
           </button>
           <button
             onClick={() => setIsFormOpen(true)}

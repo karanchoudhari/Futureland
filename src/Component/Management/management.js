@@ -507,205 +507,19 @@
 
 // export default Management;
 
-import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import Usermanagetable from './usermanagetable';
+import React, { useState } from 'react';
 import Blogfront from '../Management/Blog/blogfront'; // Import Blogfront component
 import Graphfront from '../Overview/graphfront'; // Import graphfront component
-import { useNavigate } from 'react-router-dom';
-import { Plus, X, Edit, Trash2 } from 'lucide-react';
+import CompanyManagementAdd from './CompanyManagementAdd'; // Import the CompanyManagementAdd component
 
 const Management = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [companyName, setCompanyName] = useState('');
-  const [userRole, setUserRole] = useState('');
-  const [userExpiryDate, setUserExpiryDate] = useState(null);
-  const [userData, setUserData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [newSector, setNewSector] = useState('');
-  const [sectorError, setSectorError] = useState('');
-
-  const [companyData] = useState([
-    { id: 1, company_name: 'Tech Solutions' },
-    { id: 2, company_name: 'Global Innovations' },
-    { id: 3, company_name: 'NextGen Enterprises' },
-    { id: 4, company_name: 'Smart Systems' },
-    { id: 5, company_name: 'Smart Systems' }
-  ]);
-
-  const [activeTab, setActiveTab] = useState('userManagement'); // State to manage active tab
-
-  const navigate = useNavigate();
-
-  // Load user data from localStorage on component mount
-  useEffect(() => {
-    const storedUserData = JSON.parse(localStorage.getItem('userData')) || [];
-    setUserData(storedUserData);
-  }, []);
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const newUser = {
-      _id: userData.length + 1,
-      name,
-      email,
-      password,
-      company_name: companyName,
-      user_role: userRole,
-      user_creted_by: 'Admin',
-      user_expiry_date: userExpiryDate ? userExpiryDate.toISOString().split('T')[0] : 'N/A',
-    };
-
-    const updatedUserData = [...userData, newUser];
-    setUserData(updatedUserData);
-    localStorage.setItem('userData', JSON.stringify(updatedUserData)); // Save to localStorage
-    handleReset();
-  };
-
-  // Reset form fields
-  const handleReset = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-    setCompanyName('');
-    setUserRole('');
-    setUserExpiryDate(null);
-  };
-
-  // Handle adding a new sector
-  const handleAddSector = () => {
-    if (!newSector) {
-      setSectorError('Sector name is required');
-      return;
-    }
-    if (companyData.some((sector) => sector.company_name === newSector)) {
-      setSectorError('Sector already exists');
-      return;
-    }
-    companyData.push({ id: companyData.length + 1, company_name: newSector });
-    setNewSector('');
-    setShowModal(false);
-  };
+  const [activeTab, setActiveTab] = useState('companyManagement'); // State to manage active tab
 
   // Render content based on active tab
   const renderContent = () => {
     switch (activeTab) {
-      case 'userManagement':
-        return (
-          <div className="p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold text-center mb-6">User Management</h1>
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6" autoComplete='off'>
-              {/* Name */}
-              <div className="flex flex-col">
-                <label className="text-sm font-semibold mb-1">Name:</label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="p-2 border border-gray-300 rounded-md"
-                  placeholder="Enter name"
-                  required
-                />
-              </div>
-
-              {/* Email */}
-              <div className="flex flex-col">
-                <label className="text-sm font-semibold mb-1">Email:</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="p-2 border border-gray-300 rounded-md"
-                  placeholder="Enter email"
-                  required
-                />
-              </div>
-
-              {/* Password */}
-              <div className="flex flex-col">
-                <label className="text-sm font-semibold mb-1">Password:</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="p-2 border border-gray-300 rounded-md"
-                  placeholder="Enter password"
-                  required
-                />
-              </div>
-
-              {/* Company Name */}
-              <div className="flex flex-col">
-                <label className="text-sm font-semibold mb-1">Company:</label>
-                <select
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
-                  className="p-2 border border-gray-300 rounded-md"
-                  required
-                >
-                  <option value="">Please Select</option>
-                  {companyData.map((company) => (
-                    <option key={company.id} value={company.company_name}>
-                      {company.company_name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* User Role */}
-              <div className="flex flex-col">
-                <label className="text-sm font-semibold mb-1">User Role:</label>
-                <select
-                  value={userRole}
-                  onChange={(e) => setUserRole(e.target.value)}
-                  className="p-2 border border-gray-300 rounded-md"
-                  required
-                >
-                  <option value="">Please Select</option>
-                  <option value="Super Admin">Super Admin</option>
-                  <option value="Admin">Admin</option>
-                  <option value="User">User</option>
-                </select>
-              </div>
-
-              {/* Expiry Date */}
-              <div className="flex flex-col">
-                <label className="text-sm font-semibold mb-1">Expiry Date:</label>
-                <DatePicker
-                  selected={userExpiryDate}
-                  onChange={(date) => setUserExpiryDate(date)}
-                  className="p-2 border border-gray-300 rounded-md w-full"
-                  placeholderText="Select Expiry Date"
-                  dateFormat="dd/MM/yyyy"
-                  required
-                />
-              </div>
-
-              {/* Form Buttons */}
-              <div className="col-span-1 md:col-span-2 flex justify-between mt-6">
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  className="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-                >
-                  Reset
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-            <Usermanagetable userData={userData} />
-          </div>
-        );
+      case 'companyManagement':
+        return <CompanyManagementAdd />;
       case 'blog':
         return <Blogfront />;
       case 'graph':
@@ -720,14 +534,14 @@ const Management = () => {
       {/* Buttons at the Top Center */}
       <div className="flex justify-center gap-4 mb-6">
         <button
-          onClick={() => setActiveTab('userManagement')}
+          onClick={() => setActiveTab('companyManagement')}
           className={`px-6 py-2 rounded-t-lg transition-all ${
-            activeTab === 'userManagement'
+            activeTab === 'companyManagement'
               ? 'bg-white text-blue-500 shadow-lg'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          User Management
+          Company Management
         </button>
         <button
           onClick={() => setActiveTab('blog')}
@@ -753,35 +567,6 @@ const Management = () => {
 
       {/* Render Content Based on Active Tab */}
       {renderContent()}
-
-      {/* Add Sector Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg p-6 w-96">
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <h2 className="text-xl font-bold mb-4">Add New Sector</h2>
-            <input
-              type="text"
-              value={newSector}
-              onChange={(e) => setNewSector(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="Enter sector name"
-            />
-            {sectorError && <p className="text-red-500 text-sm mt-2">{sectorError}</p>}
-            <button
-              onClick={handleAddSector}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

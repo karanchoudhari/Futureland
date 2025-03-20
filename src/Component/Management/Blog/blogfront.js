@@ -146,7 +146,7 @@ const Blogfront = () => {
   const closeUpdateModal = () => setShowUpdateModal(false);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100 p-6">
+    <div className="flex flex-col h-auto bg-gray-100 p-6">
       {/* Header with Add Blog Button */}
         <h1 className="text-2xl font-bold text-gray-800 text-center">Blog List</h1>
       <div className="flex justify-between items-center mb-6">
@@ -154,8 +154,7 @@ const Blogfront = () => {
             onClick={() => window.history.back()}
             className="flex items-center text-gray-800 hover:text-gray-600"
           >
-            <ChevronLeft className="w-6 h-6 mr-2" />
-            Back
+          
           </button>
         <button
           onClick={handleAddBlog}
@@ -167,7 +166,7 @@ const Blogfront = () => {
       </div>
 
       {/* Blog Table */}
-      <div className="flex-1 overflow-auto bg-white shadow-md rounded-md">
+      <div className="flex-1  bg-white shadow-md rounded-md">
         <Blogtable
           blogs={blogs}
           handleEdit={handleEdit}

@@ -853,7 +853,6 @@
 // };
 
 // export default AddProject1;
-
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import DatePicker from "react-datepicker";
@@ -1099,25 +1098,32 @@ const AddProject1 = ({ editingProject, onClose }) => {
   return (
     <Box display="flex" justifyContent="center" alignItems="flex-start" p={4} ref={formRef}>
       <Paper elevation={3} sx={{ p: 5, borderRadius: 6, maxWidth: 850, width: '100%', background: '#fff', mt: 0, position: 'relative' }}>
-        <IconButton
-          sx={{
-            position: 'absolute',
-            top: '-6px',
-            right: '-10px',
-            backgroundColor: 'white',
-            width: 30,
-            height: 30,
-            // boxShadow: ,
-          }}
+        <button
+          className="
+    absolute 
+    -top-3 
+    -right-3 
+    bg-white 
+    w-[30px] 
+    h-[30px] 
+    border 
+    border-gray-300 
+    shadow-md 
+    flex 
+    items-center 
+    justify-center
+    rounded-full
+  "
           onClick={onClose}
         >
           <X size={16} />
-        </IconButton>
+        </button>
+
         <Typography variant="h4" align="center" fontWeight="bold" color="primary" gutterBottom>
           {editingProject ? "Edit Project" : "Add Project"}
         </Typography>
         <Divider sx={{ my: 3 }} />
-        <form onSubmit={(e)=>handleKmlUpload(e)} autoComplete="off">
+        <form onSubmit={(e) => handleKmlUpload(e)} autoComplete="off">
           <style>
             {`
               @keyframes shake {
@@ -1390,9 +1396,9 @@ const AddProject1 = ({ editingProject, onClose }) => {
                     },
                   },
                 }}
-                // InputProps={{
-                //   className: shouldShake("contractor"),
-                // }}
+              // InputProps={{
+              //   className: shouldShake("contractor"),
+              // }}
               />
             </Grid>
 
@@ -1549,22 +1555,31 @@ const AddProject1 = ({ editingProject, onClose }) => {
                 component="label"
                 fullWidth
                 variant="outlined"
-                // sx={{ mt: 2, py: 1, border: '1px dashed #3b82f6', color: '#3b82f6', fontWeight: 'bold', fontSize: '1rem', borderRadius: 3, position: 'relative' }}
+                sx={{
+                  mt: 2,
+                  py: 1,
+                  border: '1px dashed #3b82f6',
+                  color: '#3b82f6',
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                  borderRadius: 3,
+                  position: 'relative',
+                }}
               >
-                {/* <MapPinned size={20} style={{ marginRight: '8px' }} /> */}
-                {/* Upload KML File */}
+                <MapPinned size={20} style={{ marginRight: '8px' }} />
+
+                Upload KML
                 <input
                   type="file"
                   accept=".kml, .kmz"
                   multiple
-                  className="w-full text-gray-300 p-2 border border-gray-600 rounded "
                   onChange={(e) => setKmlFiles(Array.from(e.target.files))}
                   disabled={isUploading}
+                  className="absolute inset-0 opacity-0 cursor-pointer"
                 />
               </Button>
             </Grid>
 
-            {/* Document File Upload */}
             <Grid item xs={12}>
               <Button
                 component="label"
@@ -1617,7 +1632,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
         {/* Add Sector Modal */}
         {showModal && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+            className="fixed inset-0 black bg-opacity-50 flex items-center justify-center z-50"
             onClick={() => setShowModal(false)}
           >
             <div
@@ -1658,7 +1673,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
 
         {/* Success Modal */}
         {showSuccessModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="fixed inset-0  flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-8 w-96 relative">
               <button onClick={closeSuccessModal} className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
                 <X className="w-6 h-6" />
@@ -1674,7 +1689,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
 
         {/* Update Modal */}
         {showUpdateModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="fixed inset-0  flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-8 w-96 relative">
               <button onClick={closeUpdateModal} className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
                 <X className="w-6 h-6" />

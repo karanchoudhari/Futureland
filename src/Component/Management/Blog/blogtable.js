@@ -325,7 +325,13 @@ import { Edit, Trash, CheckCircle, X } from 'lucide-react';
 
 const Blogtable = ({ blogs, handleEdit, handleDelete, showSuccessModal, showUpdateModal, closeSuccessModal, closeUpdateModal }) => {
   return (
-    <div className="p-6 bg-white shadow-lg rounded-xl">
+    <div className="p-6 bg-white shadow-lg rounded-xl" style={{
+            overflowY: 'scroll',
+            height: '70vh',
+            width: '100%',
+            scrollbarWidth: '1px',
+            msOverflowStyle: 'none'
+          }}>
       <div className="overflow-x-auto">
         <table className="min-w-full border border-gray-300 rounded-lg shadow-md">
           <thead>
