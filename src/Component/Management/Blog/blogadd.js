@@ -611,6 +611,12 @@ const Addblogs = ({ onSubmit, onCancel, editIndex, blogs }) => {
     setErrors({ ...errors, [name]: '' });
   };
 
+  
+
+
+
+
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith('image/')) {
@@ -638,17 +644,20 @@ const Addblogs = ({ onSubmit, onCancel, editIndex, blogs }) => {
       setTimeout(() => setShake(false), 500); // Shake animation
       return;
     }
+    
+    
 
-    const blog = {
-      title: formData.title,
-      readTime: formData.readTime,
-      date: formData.date,
-      image: typeof formData.imageFile === 'string' ? formData.imageFile : URL.createObjectURL(formData.imageFile), // Handle existing image URL
-      link: formData.link,
-      imageFile: formData.imageFile, // Pass imageFile for future updates
-    };
 
-    onSubmit(blog, editIndex !== null);
+    // const blog = {
+    //   title: formData.title,
+    //   readTime: formData.readTime,
+    //   date: formData.date,
+    //   image: typeof formData.imageFile === 'string' ? formData.imageFile : URL.createObjectURL(formData.imageFile), // Handle existing image URL
+    //   link: formData.link,
+    //   imageFile: formData.imageFile, // Pass imageFile for future updates
+    // };
+
+    // onSubmit(blog, editIndex !== null);
   };
 
   return (
