@@ -223,7 +223,7 @@ function CompanyManageTable({ companyData, setCompanyData }) {
       <ul className="border border-gray-300 rounded-md overflow-hidden">
         {/* Table Header */}
         <li className="flex bg-gray-100 font-semibold text-sm text-gray-700 border-b border-gray-300">
-          {['Company Name', 'Email','Expiry-Date', 'Password', 'Country', 'State', 'City', 'Action'].map((header, index) => (
+          {['Company Name', 'Company Email','Expiry-Date', 'Password', 'Country', 'State', 'City', 'Action'].map((header, index) => (
             <div key={index} className="flex-1 px-4 py-2 flex flex-col items-start relative border-r border-gray-200">
               <div className="flex items-center w-full">
                 <span className="text-xs font-semibold uppercase mr-2">

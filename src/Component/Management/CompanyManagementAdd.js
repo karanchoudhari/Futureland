@@ -285,7 +285,7 @@ const CompanyManagementAdd = () => {
 
         {/* Company Expiry date  */}
         <div className="flex flex-col">
-          <label className="text-sm font-semibold mb-1">Company Email:</label>
+          <label className="text-sm font-semibold mb-1">Company Expiry date:</label>
           <input
             type="date"
             value={company_ExpiryDate}
