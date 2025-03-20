@@ -86,6 +86,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import MapComponent from '../Projectsfolder/NestComponent_Project/mapComponent_kml';
 
 const Detail = () => {
     const location = useLocation();
@@ -154,7 +155,8 @@ const Detail = () => {
                     <div className="col-span-1 lg:col-span-2">
                         <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
                             <div className="h-48 sm:h-64 md:h-96 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">
-                                <p className="text-xl">Map Placeholder</p>
+                                {/* <p className="text-xl">Map Placeholder</p> */}
+                                <MapComponent/>
                             </div>
                         </div>
 

@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Country, State, City } from "country-state-city";
 import { Plus, Upload, X, CheckCircle, Trash, Edit, FilePlus, MapPinned } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { TextField, MenuItem, Button, Box, Typography, Grid, Paper, Divider, IconButton,InputAdornment } from '@mui/material';
+import { TextField, MenuItem, Button, Box, Typography, Grid, Paper, Divider, IconButton, InputAdornment } from '@mui/material';
 
 const AddProject1 = ({ editingProject, onClose }) => {
   const [formData, setFormData] = useState({
@@ -20,10 +20,10 @@ const AddProject1 = ({ editingProject, onClose }) => {
     startDate: null,
     endDate: null,
     contractor: "",
-    districtMagistrate:'',
-    population:'',
-    registrarOffice:'',
-    circleRate:'',
+    districtMagistrate: '',
+    population: '',
+    registrarOffice: '',
+    circleRate: '',
     kmlFile: null,
     documentFile: null,
   });
@@ -36,6 +36,8 @@ const AddProject1 = ({ editingProject, onClose }) => {
   const [shakeFields, setShakeFields] = useState([]);
   const [sectorError, setSectorError] = useState("");
   const [fileName, setFileName] = useState('');
+  const [message, setMessage] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
 
   const companyId = '67ce66294f28f85e4ff91e2c';
   const navigate = useNavigate();
@@ -50,6 +52,9 @@ const AddProject1 = ({ editingProject, onClose }) => {
       });
     }
   }, [editingProject]);
+
+
+  const [kmlFiles, setKmlFiles] = useState([]);
 
   const handleAddSector = () => {
     if (newSector.trim() && !sectors.includes(newSector.trim())) {
@@ -118,9 +123,12 @@ const AddProject1 = ({ editingProject, onClose }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
+  const handleSubmit = async (kmlurl) => {
+    // e.preventDefault();
+    // await handleKmlUpload()
+
+    console.log("upload kml s")
+
     // Check for empty fields
     const emptyFields = Object.entries(formData)
       .filter(([key, value]) => {
@@ -130,13 +138,13 @@ const AddProject1 = ({ editingProject, onClose }) => {
         return value === "";
       })
       .map(([key]) => key);
-  
+
     if (emptyFields.length > 0) {
       setShakeFields(emptyFields); // Set fields to shake
       setTimeout(() => setShakeFields([]), 500); // Reset shake after 500ms
       return;
     }
-  
+
     try {
       const payload = {
         project_name: formData.project_name, // Map project_name to projectname
@@ -149,13 +157,13 @@ const AddProject1 = ({ editingProject, onClose }) => {
         startDate: formData.startDate?.toISOString().split("T")[0],
         endDate: formData.endDate?.toISOString().split("T")[0],
         contractor: formData.contractor,
-        districtMagistrate:formData.districtMagistrate,
-        population:formData.population,
-        registrarOffice:formData.registrarOffice,
-        circleRate:formData.circleRate,
-        // kml: formData.kmlFile ? [{ url: "https://example.com/kml-file-url" }] : [], // Mock URL for testing
+        districtMagistrate: formData.districtMagistrate,
+        population: formData.population,
+        registrarOffice: formData.registrarOffice,
+        circleRate: formData.circleRate,
+        kml: kmlurl ? kmlurl : [], // Mock URL for testing
       };
-  
+
       if (editingProject) {
         // Update project
         const response = await axios.put(
@@ -165,7 +173,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
             headers: {
               'x-company-id': companyId,
               'Content-Type': 'application/json',
-              'x-project-id':  editingProject._id
+              'x-project-id': editingProject._id
             },
           }
         );
@@ -205,6 +213,59 @@ const AddProject1 = ({ editingProject, onClose }) => {
     return shakeFields.includes(fieldName) ? "animate-shake" : "";
   };
 
+
+  const handleKmlUpload = async (e) => {
+    e.preventDefault()
+    if (kmlFiles.length === 0) {
+      setMessage("No KML files selected!");
+      return;
+    }
+
+    setIsUploading(true); // Disable the button
+    setMessage("Uploading files..."); // Reset the message
+
+    try {
+      for (const file of kmlFiles) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "ml_default"); // Ensure correct preset
+
+        const response = await axios.post(
+          "https://api.cloudinary.com/v1_1/dnqrumfwn/upload",
+          formData
+        );
+
+        // await sendFileUrlToAPI(response.data.secure_url);
+        await handleSubmit(response.data.secure_url);
+      }
+      setMessage("All files uploaded and stored successfully!");
+    } catch (error) {
+      setMessage("Upload failed. Please try again.");
+      console.error("Upload Error:", error);
+    } finally {
+      setIsUploading(false); // Re-enable the button
+      setKmlFiles([]); // Clear the file input
+    }
+  };
+
+  // const sendFileUrlToAPI = async (fileUrl) => {
+  //   try {
+  //     const response = await axios.post("/api/main/kmlfile", { fileUrl }, {
+  //       headers: {
+  //         "x-auth-token": localStorage.getItem("token"),
+  //         // 'x-report-id': Cookies.get('reportId')
+  //       }
+  //     });
+  //     if (response.status !== 200 && response.status !== 201) {
+  //       throw new Error(`Unexpected response status: ${response.status}`);
+  //     }
+  //   } catch (error) {
+  //     setMessage("Failed to store file URLs. Please check the API.");
+  //     console.error("API Error:", error);
+  //     throw error; // Re-throw to stop further processing
+  //   }
+  // };
+
   return (
     <Box display="flex" justifyContent="center" alignItems="flex-start" p={4} ref={formRef}>
       <Paper elevation={3} sx={{ p: 5, borderRadius: 6, maxWidth: 850, width: '100%', background: '#fff', mt: 0 }}>
@@ -212,7 +273,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
           {editingProject ? "Edit Project" : "Add Project"}
         </Typography>
         <Divider sx={{ my: 3 }} />
-        <form onSubmit={handleSubmit} autoComplete="off">
+        <form onSubmit={(e)=>handleKmlUpload(e)} autoComplete="off">
           <style>
             {`
               @keyframes shake {
@@ -585,7 +646,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
                 }}
               />
             </Grid>
-         
+
 
 
             {/* Start Date */}
@@ -652,10 +713,11 @@ const AddProject1 = ({ editingProject, onClose }) => {
                 Upload KML File
                 <input
                   type="file"
-                  name="kmlFile"
-                  onChange={handleChange}
-                  style={{ display: 'none' }}
-                  accept=".kml"
+                  accept=".kml, .kmz"
+                  multiple
+                  className="w-full text-gray-300 p-2 border border-gray-600 rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  onChange={(e) => setKmlFiles(Array.from(e.target.files))}
+                  disabled={isUploading} // Disable input during upload
                 />
               </Button>
             </Grid>
