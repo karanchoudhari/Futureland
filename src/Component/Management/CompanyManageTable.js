@@ -223,7 +223,7 @@ function CompanyManageTable({ companyData, setCompanyData }) {
       <ul className="border border-gray-300 rounded-md overflow-hidden">
         {/* Table Header */}
         <li className="flex bg-gray-100 font-semibold text-sm text-gray-700 border-b border-gray-300">
-          {['Company Name', 'Email', 'Password', 'Country', 'State', 'City', 'Action'].map((header, index) => (
+          {['Company Name', 'Email','Expiry-Date', 'Password', 'Country', 'State', 'City', 'Action'].map((header, index) => (
             <div key={index} className="flex-1 px-4 py-2 flex flex-col items-start relative border-r border-gray-200">
               <div className="flex items-center w-full">
                 <span className="text-xs font-semibold uppercase mr-2">
@@ -237,8 +237,9 @@ function CompanyManageTable({ companyData, setCompanyData }) {
         {/* Table Rows */}
         {currentItems.map((company) => (
           <li key={company._id} className="flex border-b border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
-            <div className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">{company.companyName}</div>
-            <div className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">{company.companyEmail}</div>
+            <div className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">{company.company_Name}</div>
+            <div className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">{company.company_Email}</div>
+            <div className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">{company.company_ExpiryDate}</div>
             <div className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">{company.password}</div>
             <div className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">{company.country}</div>
             <div className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">{company.state}</div>

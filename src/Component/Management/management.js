@@ -549,7 +549,7 @@ export default Management;
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 
-//     const newUser = {
+//     const newCompany = {
 //       _id: userData.length + 1,
 //       name,
 //       email,
@@ -560,7 +560,7 @@ export default Management;
 //       user_expiry_date: userExpiryDate ? userExpiryDate.toISOString().split('T')[0] : 'N/A',
 //     };
 
-//     setUserData((prevData) => [...prevData, newUser]); // Update userData state
+//     setUserData((prevData) => [...prevData, newCompany]); // Update userData state
 //     handleReset();
 //   };
 
@@ -762,7 +762,7 @@ export default Management;
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 
-//     const newUser = {
+//     const newCompany = {
 //       _id: userData.length + 1,
 //       name,
 //       email,
@@ -773,7 +773,7 @@ export default Management;
 //       user_expiry_date: userExpiryDate ? userExpiryDate.toISOString().split('T')[0] : 'N/A',
 //     };
 
-//     setUserData((prevData) => [...prevData, newUser]);
+//     setUserData((prevData) => [...prevData, newCompany]);
 //     handleReset();
 //   };
 
