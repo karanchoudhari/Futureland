@@ -611,6 +611,12 @@ const Addblogs = ({ onSubmit, onCancel, editIndex, blogs }) => {
     setErrors({ ...errors, [name]: '' });
   };
 
+  
+
+
+
+
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith('image/')) {
@@ -639,6 +645,9 @@ const Addblogs = ({ onSubmit, onCancel, editIndex, blogs }) => {
       return;
     }
     
+    
+
+
     // const blog = {
     //   title: formData.title,
     //   readTime: formData.readTime,
