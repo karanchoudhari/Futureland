@@ -265,7 +265,7 @@ import GraphTable from './graphtable'
 import { ChevronLeft, ChevronRight, Filter, X, Search, Edit, Trash2, ArrowUpDown } from "lucide-react";
 
 
-const graphfront = () => {
+const Graphfront = () => {
   return (
    <>
    
@@ -274,4 +274,4 @@ const graphfront = () => {
   )
 }
 
-export default graphfront
+export default Graphfront;

@@ -15,7 +15,7 @@ const ProjectList = ({ onEditProject }) => {
   const [filterDropdown, setFilterDropdown] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
-  const itemsPerPage = 15;
+  const itemsPerPage = 10;
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
@@ -127,13 +127,26 @@ const ProjectList = ({ onEditProject }) => {
   };
 
   // Get unique values for a column (limited to 4 values)
+  // const getUniqueValues = (key) => {
+  //   const values = projectList.map((item) => item[key]);
+  //   const uniqueValues = [...new Set(values)].filter((value) => {
+  //     if (typeof value === "number") {
+  //       return value.toString().includes(searchQuery); // Handle numeric values
+  //     }
+  //     return value.toLowerCase().includes(searchQuery.toLowerCase());
+  //   });
+  //   return uniqueValues.slice(0, 4); // Show only 4 values
+  // };
+
+
   const getUniqueValues = (key) => {
     const values = projectList.map((item) => item[key]);
     const uniqueValues = [...new Set(values)].filter((value) => {
+      if (value === undefined || value === null) return false; // Skip undefined or null values
       if (typeof value === "number") {
         return value.toString().includes(searchQuery); // Handle numeric values
       }
-      return value.toLowerCase().includes(searchQuery.toLowerCase());
+      return String(value).toLowerCase().includes(searchQuery.toLowerCase());
     });
     return uniqueValues.slice(0, 4); // Show only 4 values
   };
