@@ -201,12 +201,14 @@
 // };
 
 // export default CompanyManagementAdd;
+
 import React, { useState, useEffect } from 'react';
 import CompanyManageTable from './CompanyManageTable'; // Import the table component
 
 const CompanyManagementAdd = () => {
-  const [companyName, setCompanyName] = useState('');
-  const [companyEmail, setCompanyEmail] = useState('');
+  const [company_Name, setCompanyName] = useState('');
+  const [company_Email, setCompanyEmail] = useState('');
+  const [company_ExpiryDate, setCompanyExpiryDate] = useState('');
   const [password, setPassword] = useState('');
   const [country, setCountry] = useState('');
   const [state, setState] = useState('');
@@ -224,9 +226,10 @@ const CompanyManagementAdd = () => {
     e.preventDefault();
 
     const newCompany = {
-       
-      companyName,
-      companyEmail,
+      _id: companyData.length + 1,
+      company_Name,
+      company_Email,
+      company_ExpiryDate,
       password,
       country,
       state,
@@ -243,6 +246,7 @@ const CompanyManagementAdd = () => {
   const handleReset = () => {
     setCompanyName('');
     setCompanyEmail('');
+    setCompanyExpiryDate('');
     setPassword('');
     setCountry('');
     setState('');
@@ -258,7 +262,7 @@ const CompanyManagementAdd = () => {
           <label className="text-sm font-semibold mb-1">Company Name:</label>
           <input
             type="text"
-            value={companyName}
+            value={company_Name}
             onChange={(e) => setCompanyName(e.target.value)}
             className="p-2 border border-gray-300 rounded-md"
             placeholder="Enter company name"
@@ -271,8 +275,21 @@ const CompanyManagementAdd = () => {
           <label className="text-sm font-semibold mb-1">Company Email:</label>
           <input
             type="email"
-            value={companyEmail}
+            value={company_Email}
             onChange={(e) => setCompanyEmail(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md"
+            placeholder="Enter company email"
+            required
+          />
+        </div>
+
+        {/* Company Expiry date  */}
+        <div className="flex flex-col">
+          <label className="text-sm font-semibold mb-1">Company Expiry date:</label>
+          <input
+            type="date"
+            value={company_ExpiryDate}
+            onChange={(e) => setCompanyExpiryDate(e.target.value)}
             className="p-2 border border-gray-300 rounded-md"
             placeholder="Enter company email"
             required
@@ -332,7 +349,7 @@ const CompanyManagementAdd = () => {
         </div>
 
         {/* Form Buttons */}
-        <div className="col-span-1 md:col-span-2 flex justify-between mt-6">
+        <div className="col-span-1 md:col-span-2 flex justify-between mt-3">
           <button
             type="button"
             onClick={handleReset}

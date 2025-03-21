@@ -65,6 +65,8 @@ const Management = () => {
 export default Management;
 
 
+
+
 // import React, { useState, useEffect } from 'react';
 // import DatePicker from 'react-datepicker';
 // import 'react-datepicker/dist/react-datepicker.css';
@@ -113,17 +115,18 @@ export default Management;
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 
-//     const newCompany = {
+//     const newUser = {
        
-//       company_name:name,
-//       company_emailemail,
-//       password, 
+//       name,
+//       email,
+//       password,
+//       company_name: companyName,
 //       user_role: userRole,
 //       user_creted_by: 'Admin',
-//       company_expiry: userExpiryDate ? userExpiryDate.toISOString().split('T')[0] : 'N/A',
+//       user_expiry_date: userExpiryDate ? userExpiryDate.toISOString().split('T')[0] : 'N/A',
 //     };
 
-//     const updatedUserData = [...userData, newCompany];
+//     const updatedUserData = [...userData, newUser];
 //     // setUserData(updatedUserData);
 //     // localStorage.setItem('userData', JSON.stringify(updatedUserData)); // Save to localStorage
 //     handleReset();
