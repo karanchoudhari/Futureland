@@ -191,9 +191,9 @@ const ProjectList = ({ onEditProject }) => {
 
   return (
     <div className="overflow-hidden w-full h-[100vh] bg-white shadow-md rounded-md">
-      <ul className="border border-gray-300 rounded-md overflow-hidden">
+      <ul className=" border-gray-300 rounded-md overflow-hidden">
         {/* Table Header */}
-        <li className="flex bg-gray-100 font-semibold text-sm text-gray-700 border-b border-gray-300">
+        <li className="flex bg-gray-100 font-semibold text-sm text-gray-700  border-gray-300">
           {[
             "project_name",
             "sector",
@@ -207,7 +207,7 @@ const ProjectList = ({ onEditProject }) => {
             "contractor",
             "action", // Action column
           ].map((header, index) => (
-            <div key={index} className="flex-1 px-4 py-2 flex flex-col items-start relative border-r border-gray-200">
+            <div key={index} className="flex-1 px-4 py-2 flex flex-col items-start relative  border-gray-200">
               <div className="flex items-center w-full">
                 <span className="text-xs font-semibold uppercase mr-2">
                   {header.replace(/_/g, " ")}
@@ -268,7 +268,7 @@ const ProjectList = ({ onEditProject }) => {
 
         {/* Applied Filters */}
         {Object.keys(filters).length > 0 && (
-          <li className="flex items-center p-2 bg-gray-50 border-b border-gray-200">
+          <li className="flex items-center p-2 bg-gray-50 border border-gray-200">
             <span className="text-sm text-gray-600 mr-2">Filters:</span>
             {Object.entries(filters).map(([key, value]) => (
               <div key={key} className="flex items-center bg-gray-200 rounded-full px-3 py-1 text-sm mr-2">
@@ -295,7 +295,7 @@ const ProjectList = ({ onEditProject }) => {
           currentData.map((item) => (
             <li
               key={item._id}
-              className="flex border-b border-gray-200 hover:bg-gray-50 cursor-pointer transition-all"
+              className="flex  border-gray-200 hover:bg-gray-50 cursor-pointer transition-all"
               onClick={() => handleProjectClick(item)} // Navigate to detail page on row click
             >
               {[
@@ -323,7 +323,7 @@ const ProjectList = ({ onEditProject }) => {
                   </button>
                 </div>, // Action buttons (pencil and trash icons)
               ].map((value, index) => (
-                <div key={index} className="flex-1 px-4 py-2 text-sm text-gray-800 border-r border-gray-200">
+                <div key={index} className="flex-1 px-4 py-2 text-sm text-gray-800  border-gray-200">
                   {value}
                 </div>
               ))}

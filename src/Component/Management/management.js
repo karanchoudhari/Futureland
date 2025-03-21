@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Blogfront from '../Management/Blog/blogfront'; // Import Blogfront component
 import Graphfront from '../Overview/graphfront'; // Import graphfront component
-import CompanyManagementAdd from './CompanyManagementAdd'; // Import the CompanyManagementAdd component
+import CompanyManageTable from './CompanyManageTable'; // Import the CompanyManageTable component
 
 const Management = () => {
   const [activeTab, setActiveTab] = useState('companyManagement'); // State to manage active tab
@@ -10,7 +10,7 @@ const Management = () => {
   const renderContent = () => {
     switch (activeTab) {
       case 'companyManagement':
-        return <CompanyManagementAdd />;
+        return <CompanyManageTable />;
       case 'blog':
         return <Blogfront />;
       case 'graph':
@@ -63,6 +63,142 @@ const Management = () => {
 };
 
 export default Management;
+
+
+
+
+// import React, { useState } from 'react';
+// import Blogfront from '../Management/Blog/blogfront'; // Import Blogfront component
+// import Graphfront from '../Overview/graphfront'; // Import graphfront component
+// import CompanyManageTable from './CompanyManageTable'; // Import the CompanyManageTable component
+
+// const Management = () => {
+//   const [activeTab, setActiveTab] = useState('companyManagement'); // State to manage active tab
+
+//   // Render content based on active tab
+//   const renderContent = () => {
+//     switch (activeTab) {
+//       case 'companyManagement':
+//         return <CompanyManageTable />;
+//       case 'blog':
+//         return <Blogfront />;
+//       case 'graph':
+//         return <Graphfront />;
+//       default:
+//         return null;
+//     }
+//   };
+
+//   return (
+//     <div className="p-6 bg-gray-100 min-h-screen">
+//       {/* Buttons at the Top Center */}
+//       <div className="flex justify-center gap-4 mb-6">
+//         <button
+//           onClick={() => setActiveTab('companyManagement')}
+//           className={`px-6 py-2 rounded-t-lg transition-all ${
+//             activeTab === 'companyManagement'
+//               ? 'bg-white text-blue-500 shadow-lg'
+//               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+//           }`}
+//         >
+//           Company Management
+//         </button>
+//         <button
+//           onClick={() => setActiveTab('blog')}
+//           className={`px-6 py-2 rounded-t-lg transition-all ${
+//             activeTab === 'blog'
+//               ? 'bg-white text-green-500 shadow-lg'
+//               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+//           }`}
+//         >
+//           Blog
+//         </button>
+//         <button
+//           onClick={() => setActiveTab('graph')}
+//           className={`px-6 py-2 rounded-t-lg transition-all ${
+//             activeTab === 'graph'
+//               ? 'bg-white text-purple-500 shadow-lg'
+//               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+//           }`}
+//         >
+//           Graph
+//         </button>
+//       </div>
+
+//       {/* Render Content Based on Active Tab */}
+//       {renderContent()}
+//     </div>
+//   );
+// };
+
+// export default Management;
+
+
+// import React, { useState } from 'react';
+// import Blogfront from '../Management/Blog/blogfront'; // Import Blogfront component
+// import Graphfront from '../Overview/graphfront'; // Import graphfront component
+// import CompanyManagementAdd from './CompanyManagementAdd'; // Import the CompanyManagementAdd component
+
+// const Management = () => {
+//   const [activeTab, setActiveTab] = useState('companyManagement'); // State to manage active tab
+
+//   // Render content based on active tab
+//   const renderContent = () => {
+//     switch (activeTab) {
+//       case 'companyManagement':
+//         return <CompanyManagementAdd />;
+//       case 'blog':
+//         return <Blogfront />;
+//       case 'graph':
+//         return <Graphfront />;
+//       default:
+//         return null;
+//     }
+//   };
+
+//   return (
+//     <div className="p-6 bg-gray-100 min-h-screen">
+//       {/* Buttons at the Top Center */}
+//       <div className="flex justify-center gap-4 mb-6">
+//         <button
+//           onClick={() => setActiveTab('companyManagement')}
+//           className={`px-6 py-2 rounded-t-lg transition-all ${
+//             activeTab === 'companyManagement'
+//               ? 'bg-white text-blue-500 shadow-lg'
+//               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+//           }`}
+//         >
+//           Company Management
+//         </button>
+//         <button
+//           onClick={() => setActiveTab('blog')}
+//           className={`px-6 py-2 rounded-t-lg transition-all ${
+//             activeTab === 'blog'
+//               ? 'bg-white text-green-500 shadow-lg'
+//               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+//           }`}
+//         >
+//           Blog
+//         </button>
+//         <button
+//           onClick={() => setActiveTab('graph')}
+//           className={`px-6 py-2 rounded-t-lg transition-all ${
+//             activeTab === 'graph'
+//               ? 'bg-white text-purple-500 shadow-lg'
+//               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+//           }`}
+//         >
+//           Graph
+//         </button>
+//       </div>
+
+//       {/* Render Content Based on Active Tab */}
+//       {renderContent()}
+//     </div>
+//   );
+// };
+
+// export default Management;
 
 
 
