@@ -224,7 +224,7 @@ const CompanyManagementAdd = () => {
     e.preventDefault();
 
     const newCompany = {
-      _id: companyData.length + 1,
+       
       companyName,
       companyEmail,
       password,
