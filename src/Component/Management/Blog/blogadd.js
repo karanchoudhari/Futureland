@@ -641,7 +641,7 @@ const Addblogs = ({ onSubmit, onCancel, editIndex, blogs }) => {
 
     if (Object.keys(newErrors).length > 0) {
       setShake(true);
-      setTimeout(() => setShake(false), 500); // Shake animation
+      setTimeout(() => setShake(false), 200); // Shake animation
       return;
     }
     

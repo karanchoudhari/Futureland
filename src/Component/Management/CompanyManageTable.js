@@ -682,7 +682,7 @@ const CompanyManageTable = () => {
 
       {/* Success Modal */}
       {showSuccessModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0    flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <h2 className="text-2xl font-bold text-green-600 mb-4">Success!</h2>
             <p className="text-gray-700">Company data has been successfully added.</p>
