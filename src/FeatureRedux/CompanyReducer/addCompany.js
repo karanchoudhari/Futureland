@@ -5,10 +5,10 @@ import Cookies from 'js-cookie';
 // Async thunk for adding a company
 const addCompany = createAsyncThunk('companyAdd', async (companyData, { rejectWithValue }) => {
     try {
-        const response = await axiosInstance.post(`/api/company/addcompany`, companyData, {
+        const response = await axiosInstance.post(`/company/addcompany`, companyData, {
             headers: {
                 'x-auth-token': localStorage.getItem('token'),
-                'x-report-id': Cookies.get('reportId')
+                // 'x-report-id': Cookies.get('reportId')
             }
         });
         return response.data;

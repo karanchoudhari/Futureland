@@ -207,8 +207,8 @@
 
 // const CompanyManagementAdd = () => {
 //   const [company_Name, setCompanyName] = useState('');
-//   const [company_Email, setCompanyEmail] = useState('');
-//   const [company_ExpiryDate, setCompanyExpiryDate] = useState('');
+//   const [company_email, setCompanyEmail] = useState('');
+//   const [company_expiry, setCompanyExpiryDate] = useState('');
 //   const [password, setPassword] = useState('');
 //   const [country, setCountry] = useState('');
 //   const [state, setState] = useState('');
@@ -227,8 +227,8 @@
 
 //     const newCompany = {
 //       company_Name,
-//       company_Email,
-//       company_ExpiryDate,
+//       company_email,
+//       company_expiry,
 //       password,
 //       country,
 //       state,
@@ -274,7 +274,7 @@
 //           <label className="text-sm font-semibold mb-1">Company Email:</label>
 //           <input
 //             type="email"
-//             value={company_Email}
+//             value={company_email}
 //             onChange={(e) => setCompanyEmail(e.target.value)}
 //             className="p-2 border border-gray-300 rounded-md"
 //             placeholder="Enter company email"
@@ -287,7 +287,7 @@
 //           <label className="text-sm font-semibold mb-1">Company Expiry date:</label>
 //           <input
 //             type="date"
-//             value={company_ExpiryDate}
+//             value={company_expiry}
 //             onChange={(e) => setCompanyExpiryDate(e.target.value)}
 //             className="p-2 border border-gray-300 rounded-md"
 //             placeholder="Enter company email"
@@ -381,8 +381,8 @@
 
 // const CompanyManagementAdd = () => {
 //   const [company_Name, setCompanyName] = useState('');
-//   const [company_Email, setCompanyEmail] = useState('');
-//   const [company_ExpiryDate, setCompanyExpiryDate] = useState('');
+//   const [company_email, setCompanyEmail] = useState('');
+//   const [company_expiry, setCompanyExpiryDate] = useState('');
 //   const [password, setPassword] = useState('');
 //   const [selectedCountry, setSelectedCountry] = useState('');
 //   const [selectedState, setSelectedState] = useState('');
@@ -458,8 +458,8 @@
 
 //     const newCompany = {
 //       company_Name,
-//       company_Email,
-//       company_ExpiryDate,
+//       company_email,
+//       company_expiry,
 //       password,
 //       locations: temporarySelections,
 //     };
@@ -507,7 +507,7 @@
 //             <label className="text-sm font-semibold mb-1 text-gray-700">Company Email:</label>
 //             <input
 //               type="email"
-//               value={company_Email}
+//               value={company_email}
 //               onChange={(e) => setCompanyEmail(e.target.value)}
 //               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //               placeholder="Enter company email"
@@ -520,7 +520,7 @@
 //             <label className="text-sm font-semibold mb-1 text-gray-700">Company Expiry Date:</label>
 //             <input
 //               type="date"
-//               value={company_ExpiryDate}
+//               value={company_expiry}
 //               onChange={(e) => setCompanyExpiryDate(e.target.value)}
 //               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //               required
@@ -667,8 +667,8 @@
 
 // const CompanyManagementAdd = () => {
 //   const [company_Name, setCompanyName] = useState('');
-//   const [company_Email, setCompanyEmail] = useState('');
-//   const [company_ExpiryDate, setCompanyExpiryDate] = useState('');
+//   const [company_email, setCompanyEmail] = useState('');
+//   const [company_expiry, setCompanyExpiryDate] = useState('');
 //   const [password, setPassword] = useState('');
 //   const [selectedCountry, setSelectedCountry] = useState(null);
 //   const [selectedState, setSelectedState] = useState(null);
@@ -782,8 +782,8 @@
 
 //     const newCompany = {
 //       company_Name,
-//       company_Email,
-//       company_ExpiryDate,
+//       company_email,
+//       company_expiry,
 //       password,
 //       locations: temporarySelections,
 //     };
@@ -832,7 +832,7 @@
 //             <label className="text-sm font-semibold mb-1 text-gray-700">Company Email</label>
 //             <input
 //               type="email"
-//               value={company_Email}
+//               value={company_email}
 //               onChange={(e) => setCompanyEmail(e.target.value)}
 //               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //               placeholder="Enter company email"
@@ -845,7 +845,7 @@
 //             <label className="text-sm font-semibold mb-1 text-gray-700">Company Expiry Date</label>
 //             <input
 //               type="date"
-//               value={company_ExpiryDate}
+//               value={company_expiry}
 //               onChange={(e) => setCompanyExpiryDate(e.target.value)}
 //               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //               required
@@ -1006,8 +1006,8 @@
 
 // const CompanyManagementAdd = () => {
 //   const [company_Name, setCompanyName] = useState('');
-//   const [company_Email, setCompanyEmail] = useState('');
-//   const [company_ExpiryDate, setCompanyExpiryDate] = useState('');
+//   const [company_email, setCompanyEmail] = useState('');
+//   const [company_expiry, setCompanyExpiryDate] = useState('');
 //   const [password, setPassword] = useState('');
 //   const [selectedCountry, setSelectedCountry] = useState(null);
 //   const [selectedState, setSelectedState] = useState(null);
@@ -1121,8 +1121,8 @@
 
 //     const newCompany = {
 //       company_Name,
-//       company_Email,
-//       company_ExpiryDate,
+//       company_email,
+//       company_expiry,
 //       password,
 //       locations: temporarySelections,
 //     };
@@ -1171,7 +1171,7 @@
 //             <label className="text-sm font-semibold mb-1 text-gray-700">Company Email</label>
 //             <input
 //               type="email"
-//               value={company_Email}
+//               value={company_email}
 //               onChange={(e) => setCompanyEmail(e.target.value)}
 //               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //               placeholder="Enter company email"
@@ -1184,7 +1184,7 @@
 //             <label className="text-sm font-semibold mb-1 text-gray-700">Company Expiry Date</label>
 //             <input
 //               type="date"
-//               value={company_ExpiryDate}
+//               value={company_expiry}
 //               onChange={(e) => setCompanyExpiryDate(e.target.value)}
 //               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //               required
@@ -1343,8 +1343,8 @@
 
 // const CompanyManagementAdd = ({ onClose }) => {
 //   const [company_Name, setCompanyName] = useState('');
-//   const [company_Email, setCompanyEmail] = useState('');
-//   const [company_ExpiryDate, setCompanyExpiryDate] = useState('');
+//   const [company_email, setCompanyEmail] = useState('');
+//   const [company_expiry, setCompanyExpiryDate] = useState('');
 //   const [password, setPassword] = useState('');
 //   const [selectedCountry, setSelectedCountry] = useState(null);
 //   const [selectedState, setSelectedState] = useState(null);
@@ -1458,8 +1458,8 @@
 
 //     const newCompany = {
 //       company_Name,
-//       company_Email,
-//       company_ExpiryDate,
+//       company_email,
+//       company_expiry,
 //       password,
 //       locations: temporarySelections,
 //     };
@@ -1509,7 +1509,7 @@
 //             <label className="text-sm font-semibold mb-1 text-gray-700">Company Email</label>
 //             <input
 //               type="email"
-//               value={company_Email}
+//               value={company_email}
 //               onChange={(e) => setCompanyEmail(e.target.value)}
 //               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //               placeholder="Enter company email"
@@ -1522,7 +1522,7 @@
 //             <label className="text-sm font-semibold mb-1 text-gray-700">Company Expiry Date</label>
 //             <input
 //               type="date"
-//               value={company_ExpiryDate}
+//               value={company_expiry}
 //               onChange={(e) => setCompanyExpiryDate(e.target.value)}
 //               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //               required
@@ -1676,12 +1676,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Country, State, City } from 'country-state-city';
 import Select from 'react-select'; // Import Select from react-select
 import { Plus, Check } from 'lucide-react'; // Icons from lucide-react
+import { useDispatch } from 'react-redux';
+import {addCompany}  from '../../FeatureRedux/CompanyReducer/addCompany'
 
 const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
   const [form, setForm] = useState({
     company_name: '',
-    company_Email: '',
-    company_ExpiryDate: '',
+    company_email: '',
+    company_expiry: '',
     password: '',
     permission_location: [{ country: '', state: '', city: '' }],
   });
@@ -1694,6 +1696,9 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
   const [error, setError] = useState('');
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
   const cityDropdownRef = useRef(null);
+
+
+  const dispatch = useDispatch()
 
   // Close city dropdown when clicking outside
   useEffect(() => {
@@ -1718,17 +1723,17 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
   // Get states based on selected country
   const states = selectedCountry
     ? State.getStatesOfCountry(selectedCountry.value).map((state) => ({
-        value: state.isoCode,
-        label: state.name,
-      }))
+      value: state.isoCode,
+      label: state.name,
+    }))
     : [];
 
   // Get cities based on selected state
   const cities = selectedState
     ? City.getCitiesOfState(selectedCountry.value, selectedState.value).map((city) => ({
-        value: city.name,
-        label: city.name,
-      }))
+      value: city.name,
+      label: city.name,
+    }))
     : [];
 
   // Handle country selection
@@ -1772,8 +1777,8 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
       state: selectedState.label,
       cities: selectedCities.map((city) => city.label), // Ensure this remains an array
     };
-    
-    
+
+
 
     setForm((prevForm) => ({
       ...prevForm,
@@ -1807,18 +1812,24 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
       id: Date.now(), // Generate a unique ID
       ...form,
     };
+    
 
-    addCompanyData(newCompany); // Add new company data
-    handleReset();
-    onClose(); // Close the modal after submission
+    console.log(JSON.stringify(newCompany, null, 2));
+
+    dispatch(addCompany(newCompany))
+
+
+    // addCompanyData(newCompany); // Add new company data
+    // handleReset();
+    // onClose(); // Close the modal after submission
   };
 
   // Reset form fields
   const handleReset = () => {
     setForm({
       company_name: '',
-      company_Email: '',
-      company_ExpiryDate: '',
+      company_email: '',
+      company_expiry: '',
       password: '',
       permission_location: [{ country: '', state: '', city: '' }],
     });
@@ -1844,7 +1855,7 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
               onChange={(e) => setForm({ ...form, company_name: e.target.value })}
               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter company name"
-              
+
             />
           </div>
 
@@ -1853,11 +1864,11 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
             <label className="text-sm font-semibold mb-1 text-gray-700">Company Email</label>
             <input
               type="email"
-              value={form.company_Email}
-              onChange={(e) => setForm({ ...form, company_Email: e.target.value })}
+              value={form.company_email}
+              onChange={(e) => setForm({ ...form, company_email: e.target.value })}
               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter company email"
-              
+
             />
           </div>
 
@@ -1866,10 +1877,10 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
             <label className="text-sm font-semibold mb-1 text-gray-700">Company Expiry Date</label>
             <input
               type="date"
-              value={form.company_ExpiryDate}
-              onChange={(e) => setForm({ ...form, company_ExpiryDate: e.target.value })}
+              value={form.company_expiry}
+              onChange={(e) => setForm({ ...form, company_expiry: e.target.value })}
               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              
+
             />
           </div>
 
@@ -1882,101 +1893,101 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter password"
-              
+
             />
           </div>
         </div>
 
-      {/* Location Selection */}
-<div className="space-y-6">
-  {/* Country, State, City in Row */}
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-    {/* Country */}
-    <div className="flex flex-col relative">
-      <label className="text-sm font-semibold mb-1 text-gray-700">Country</label>
-      <div className="flex items-center gap-2">
-        <Select
-          options={countries}
-          value={selectedCountry}
-          onChange={handleCountryChange}
-          placeholder="Select country..."
-          className="react-select-container flex-1"
-          classNamePrefix="react-select"
-          isClearable
-        />
-        {/* <button 
+        {/* Location Selection */}
+        <div className="space-y-6">
+          {/* Country, State, City in Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Country */}
+            <div className="flex flex-col relative">
+              <label className="text-sm font-semibold mb-1 text-gray-700">Country</label>
+              <div className="flex items-center gap-2">
+                <Select
+                  options={countries}
+                  value={selectedCountry}
+                  onChange={handleCountryChange}
+                  placeholder="Select country..."
+                  className="react-select-container flex-1"
+                  classNamePrefix="react-select"
+                  isClearable
+                />
+                {/* <button 
           className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           onClick={handleAddSelection}
         >
           <Plus size={16} />
         </button> */}
-      </div>
-    </div>
-
-    {/* State */}
-    <div className="flex flex-col relative">
-      <label className="text-sm font-semibold mb-1 text-gray-700">State</label>
-      <div className="flex items-center gap-2">
-        <Select
-          options={states}
-          value={selectedState}
-          onChange={handleStateChange}
-          placeholder="Select state..."
-          className="react-select-container flex-1"
-          classNamePrefix="react-select"
-          isDisabled={!selectedCountry}
-          isClearable
-        />
-        {/* <button 
-          className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          onClick={handleAddSelection}
-        >
-          <Plus size={16} />
-        </button> */}
-      </div>
-    </div>
-
-    {/* City */}
-    <div className="flex flex-col relative">
-      <label className="text-sm font-semibold mb-1 text-gray-700">City</label>
-      <div className="flex items-center gap-2">
-        <div className="relative flex-1" ref={cityDropdownRef}>
-          <input
-            type="text"
-            value={selectedCities.map((city) => city.label).join(', ')}
-            readOnly
-            onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
-            className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full cursor-pointer"
-            placeholder="Select cities..."
-          />
-          {isCityDropdownOpen && (
-            <div className="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
-              {cities.map((city) => (
-                <div
-                  key={city.value}
-                  className="p-2 hover:bg-gray-100 cursor-pointer flex items-center justify-between"
-                  onClick={() => handleAddCity(city)}
-                >
-                  <span>{city.label}</span>
-                  {/* <Plus className="text-blue-500" size={16} /> */}
-                </div>
-              ))}
+              </div>
             </div>
-          )}
-        </div>
-        <button
-      type="button"
-      onClick={handleAddSelection}
-      className=" bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center p-1"
-    >
-      <Plus className="mr" size={16} />
-    </button>
-      </div>
-    </div>
-  </div>
 
-  {/* Add Button */}
-  {/* <div className="flex justify-end">
+            {/* State */}
+            <div className="flex flex-col relative">
+              <label className="text-sm font-semibold mb-1 text-gray-700">State</label>
+              <div className="flex items-center gap-2">
+                <Select
+                  options={states}
+                  value={selectedState}
+                  onChange={handleStateChange}
+                  placeholder="Select state..."
+                  className="react-select-container flex-1"
+                  classNamePrefix="react-select"
+                  isDisabled={!selectedCountry}
+                  isClearable
+                />
+                {/* <button 
+          className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          onClick={handleAddSelection}
+        >
+          <Plus size={16} />
+        </button> */}
+              </div>
+            </div>
+
+            {/* City */}
+            <div className="flex flex-col relative">
+              <label className="text-sm font-semibold mb-1 text-gray-700">City</label>
+              <div className="flex items-center gap-2">
+                <div className="relative flex-1" ref={cityDropdownRef}>
+                  <input
+                    type="text"
+                    value={selectedCities.map((city) => city.label).join(', ')}
+                    readOnly
+                    onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
+                    className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full cursor-pointer"
+                    placeholder="Select cities..."
+                  />
+                  {isCityDropdownOpen && (
+                    <div className="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
+                      {cities.map((city) => (
+                        <div
+                          key={city.value}
+                          className="p-2 hover:bg-gray-100 cursor-pointer flex items-center justify-between"
+                          onClick={() => handleAddCity(city)}
+                        >
+                          <span>{city.label}</span>
+                          {/* <Plus className="text-blue-500" size={16} /> */}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={handleAddSelection}
+                  className=" bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center p-1"
+                >
+                  <Plus className="mr" size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Add Button */}
+          {/* <div className="flex justify-end">
     <button
       type="button"
       onClick={handleAddSelection}
@@ -1985,7 +1996,7 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
       <Plus className="mr-2" size={16} /> Add Selection
     </button>
   </div> */}
-</div>
+        </div>
 
         {/* Success and Error Messages */}
         {showSuccess && (
@@ -2017,18 +2028,18 @@ const CompanyManagementAdd = ({ onClose, addCompanyData }) => {
                 </div>
               ))} */}
               {temporarySelections.map((selection, index) => (
-  <div key={index} className="p-4 bg-gray-50 rounded-md shadow-sm border border-gray-200">
-    <p className="font-semibold text-gray-800">
-      {selection.country}, {selection.state}
-    </p>
-    <p className="text-sm text-gray-600">
-      <strong>Cities:</strong> 
-      {Array.isArray(selection.cities) 
-        ? selection.cities.map((city) => city.label).join(', ') 
-        : 'N/A'}
-    </p>
-  </div>
-))}
+                <div key={index} className="p-4 bg-gray-50 rounded-md shadow-sm border border-gray-200">
+                  <p className="font-semibold text-gray-800">
+                    {selection.country}, {selection.state}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Cities:</strong>
+                    {Array.isArray(selection.cities)
+                      ? selection.cities.map((city) => city.label).join(', ')
+                      : 'N/A'}
+                  </p>
+                </div>
+              ))}
 
             </div>
           )}
