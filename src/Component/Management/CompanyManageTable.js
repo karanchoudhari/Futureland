@@ -589,15 +589,200 @@
 
 // export default CompanyManageTable;
 
+// import React, { useState, useEffect } from 'react';
+// import CompanyManagementAdd from './CompanyManagementAdd'; // Import the CompanyManagementAdd component
+// import { Edit, Trash, X, } from 'lucide-react'; // Icons for edit and delete
+
+// const CompanyManageTable = () => {
+//   const [showAddForm, setShowAddForm] = useState(false); // State to toggle the form visibility
+//   const [companyData, setCompanyData] = useState([]); // State to manage company data
+//   const [showSuccessModal, setShowSuccessModal] = useState(false); // State to toggle success modal
+//   const [currentPage, setCurrentPage] = useState(1); // State for pagination
+//   const entriesPerPage = 5; // Number of entries per page
+
+//   // Load company data from localStorage on component mount
+//   useEffect(() => {
+//     const storedCompanyData = JSON.parse(localStorage.getItem('companyData')) || [];
+//     setCompanyData(storedCompanyData);
+//   }, []);
+
+//   // Add new company data
+//   const addCompanyData = (newCompany) => {
+//     const updatedCompanyData = [...companyData, newCompany];
+//     setCompanyData(updatedCompanyData);
+//     localStorage.setItem('companyData', JSON.stringify(updatedCompanyData));
+//     setShowSuccessModal(true); // Show success modal
+//   };
+
+//   // Handle edit action
+//   const handleEdit = (id) => {
+//     console.log('Edit company with ID:', id);
+//     // Add your edit logic here
+//   };
+
+//   // Handle delete action
+//   const handleDelete = (id) => {
+//     const updatedCompanyData = companyData.filter((company) => company.id !== id);
+//     setCompanyData(updatedCompanyData);
+//     localStorage.setItem('companyData', JSON.stringify(updatedCompanyData));
+//   };
+
+//   // Pagination logic
+//   const indexOfLastEntry = currentPage * entriesPerPage;
+//   const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
+//   const currentEntries = companyData.slice(indexOfFirstEntry, indexOfLastEntry);
+
+//   // Change page
+//   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+//   return (
+//     <div className="space-y-6">
+//       {/* Add Company Button */}
+//       <div className="flex justify-end">
+//         <button
+//           onClick={() => setShowAddForm(true)}
+//           className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center"
+//         >
+//           <span>Add Company Management</span>
+//         </button>
+//       </div>
+
+//       {/* Modal for Add Company Form */}
+//       {showAddForm && (
+//         <div className="fixed inset-0  flex items-center justify-center z-50">
+//           <div className="bg-white rounded-lg shadow-lg w-10/12 md:w-3/4 lg:w-1/2 p-6 relative">
+          
+//             <button
+//               className="
+//                 absolute 
+//                 -top-3 
+//                 -right-3 
+//                 bg-white 
+//                 w-[30px] 
+//                 h-[30px] 
+//                 border 
+//                 border-gray-300 
+//                 shadow-md 
+//                 flex 
+//                 items-center 
+//                 justify-center
+//                 rounded-full
+//               "
+//               onClick={() => setShowAddForm(false)}
+//             >
+//               <X size={16} />
+//             </button>
+//             <CompanyManagementAdd
+//               onClose={() => setShowAddForm(false)}
+//               addCompanyData={addCompanyData}
+//             />
+//           </div>
+//         </div>
+//       )}
+
+//       {/* Success Modal */}
+//       {showSuccessModal && (
+//         <div className="fixed inset-0    flex items-center justify-center z-50">
+//           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+//             <h2 className="text-2xl font-bold text-green-600 mb-4">Success!</h2>
+//             <p className="text-gray-700">Company data has been successfully added.</p>
+//             <button
+//               onClick={() => setShowSuccessModal(false)}
+//               className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+//             >
+//               Close
+//             </button>
+//           </div>
+//         </div>
+//       )}
+
+//       {/* Table */}
+//       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+//         <table className="w-full">
+//           <thead className="bg-gray-200">
+//             <tr>
+//               <th className="p-3 text-left ">Company Name</th>
+//               <th className="p-3 text-left">Email</th>
+//               <th className="p-3 text-left">Expiry Date</th>
+//               <th className="p-3 text-left">Password</th>
+//               <th className="p-3 text-left">Locations</th>
+//               <th className="p-3 text-left">Actions</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {currentEntries.map((company) => (
+//               <tr key={company.id} className="border-b  border-gray-200 hover:bg-gray-50">
+//                 <td className="p-3 border">{company.company_name}</td>
+//                 <td className="p-3 border">{company.company_Email}</td>
+//                 <td className="p-3 border">{company.company_ExpiryDate}</td>
+//                 <td className="p-3 border">{company.password}</td>
+
+//                 <td className="p-3 border">
+//                   {Array.isArray(company.permission_location) ? (
+//                     company.permission_location
+//                       .filter(location => Array.isArray(location.cities) && location.cities.length > 0) // Filter out empty entries
+//                       .map((location, idx) => (
+//                         <div key={idx}>
+//                           <strong>{location.country}</strong> - {location.state} :{' '}
+//                           {location.cities.join(', ')}
+//                         </div>
+//                       ))
+//                   ) : (
+//                     <div>No locations available</div>
+//                   )}
+//                 </td>
+//                 <td className="p-3 flex space-x-2">
+//                   <button
+//                     onClick={() => handleEdit(company.id)}
+//                     className="text-blue-500 hover:text-blue-600"
+//                   >
+//                     <Edit size={16} />
+//                   </button>
+//                   <button
+//                     onClick={() => handleDelete(company.id)}
+//                     className="text-red-500 hover:text-red-600"
+//                   >
+//                     <Trash size={16} />
+//                   </button>
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+
+//       {/* Pagination */}
+//       <div className="flex justify-center mt-4">
+//         {Array.from({ length: Math.ceil(companyData.length / entriesPerPage) }, (_, i) => (
+//           <button
+//             key={i + 1}
+//             onClick={() => paginate(i + 1)}
+//             className={`px-4 py-2 mx-1 rounded-md ${currentPage === i + 1
+//                 ? 'bg-blue-500 text-white'
+//                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+//               }`}
+//           >
+//             {i + 1}
+//           </button>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CompanyManageTable;
+
+
 import React, { useState, useEffect } from 'react';
 import CompanyManagementAdd from './CompanyManagementAdd'; // Import the CompanyManagementAdd component
-import { Edit, Trash, X, } from 'lucide-react'; // Icons for edit and delete
+import { Edit, Trash, X } from 'lucide-react'; // Icons for edit and delete
 
 const CompanyManageTable = () => {
   const [showAddForm, setShowAddForm] = useState(false); // State to toggle the form visibility
   const [companyData, setCompanyData] = useState([]); // State to manage company data
   const [showSuccessModal, setShowSuccessModal] = useState(false); // State to toggle success modal
   const [currentPage, setCurrentPage] = useState(1); // State for pagination
+  const [editingCompany, setEditingCompany] = useState(null); // State to track the company being edited
   const entriesPerPage = 5; // Number of entries per page
 
   // Load company data from localStorage on component mount
@@ -606,9 +791,19 @@ const CompanyManageTable = () => {
     setCompanyData(storedCompanyData);
   }, []);
 
-  // Add new company data
+  // Add or update company data
   const addCompanyData = (newCompany) => {
-    const updatedCompanyData = [...companyData, newCompany];
+    let updatedCompanyData;
+    if (editingCompany) {
+      // Update existing company
+      updatedCompanyData = companyData.map((company) =>
+        company.id === editingCompany.id ? newCompany : company
+      );
+      setEditingCompany(null); // Reset editing company
+    } else {
+      // Add new company
+      updatedCompanyData = [...companyData, newCompany];
+    }
     setCompanyData(updatedCompanyData);
     localStorage.setItem('companyData', JSON.stringify(updatedCompanyData));
     setShowSuccessModal(true); // Show success modal
@@ -616,8 +811,9 @@ const CompanyManageTable = () => {
 
   // Handle edit action
   const handleEdit = (id) => {
-    console.log('Edit company with ID:', id);
-    // Add your edit logic here
+    const companyToEdit = companyData.find((company) => company.id === id);
+    setEditingCompany(companyToEdit); // Set the company being edited
+    setShowAddForm(true); // Open the modal
   };
 
   // Handle delete action
@@ -640,7 +836,10 @@ const CompanyManageTable = () => {
       {/* Add Company Button */}
       <div className="flex justify-end">
         <button
-          onClick={() => setShowAddForm(true)}
+          onClick={() => {
+            setEditingCompany(null); // Reset editing company
+            setShowAddForm(true);
+          }}
           className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center"
         >
           <span>Add Company Management</span>
@@ -649,9 +848,8 @@ const CompanyManageTable = () => {
 
       {/* Modal for Add Company Form */}
       {showAddForm && (
-        <div className="fixed inset-0  flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-lg w-10/12 md:w-3/4 lg:w-1/2 p-6 relative">
-          
             <button
               className="
                 absolute 
@@ -668,13 +866,20 @@ const CompanyManageTable = () => {
                 justify-center
                 rounded-full
               "
-              onClick={() => setShowAddForm(false)}
+              onClick={() => {
+                setShowAddForm(false);
+                setEditingCompany(null); // Reset editing company
+              }}
             >
               <X size={16} />
             </button>
             <CompanyManagementAdd
-              onClose={() => setShowAddForm(false)}
+              onClose={() => {
+                setShowAddForm(false);
+                setEditingCompany(null); // Reset editing company
+              }}
               addCompanyData={addCompanyData}
+              editingCompany={editingCompany} // Pass the company being edited
             />
           </div>
         </div>
@@ -682,10 +887,10 @@ const CompanyManageTable = () => {
 
       {/* Success Modal */}
       {showSuccessModal && (
-        <div className="fixed inset-0    flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <h2 className="text-2xl font-bold text-green-600 mb-4">Success!</h2>
-            <p className="text-gray-700">Company data has been successfully added.</p>
+            <p className="text-gray-700">Company data has been successfully updated.</p>
             <button
               onClick={() => setShowSuccessModal(false)}
               className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
@@ -701,7 +906,7 @@ const CompanyManageTable = () => {
         <table className="w-full">
           <thead className="bg-gray-200">
             <tr>
-              <th className="p-3 text-left ">Company Name</th>
+              <th className="p-3 text-left">Company Name</th>
               <th className="p-3 text-left">Email</th>
               <th className="p-3 text-left">Expiry Date</th>
               <th className="p-3 text-left">Password</th>
@@ -711,16 +916,15 @@ const CompanyManageTable = () => {
           </thead>
           <tbody>
             {currentEntries.map((company) => (
-              <tr key={company.id} className="border-b  border-gray-200 hover:bg-gray-50">
+              <tr key={company.id} className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="p-3 border">{company.company_name}</td>
-                <td className="p-3 border">{company.company_Email}</td>
-                <td className="p-3 border">{company.company_ExpiryDate}</td>
+                <td className="p-3 border">{company.company_email}</td>
+                <td className="p-3 border">{company.company_expiry}</td>
                 <td className="p-3 border">{company.password}</td>
-
                 <td className="p-3 border">
                   {Array.isArray(company.permission_location) ? (
                     company.permission_location
-                      .filter(location => Array.isArray(location.cities) && location.cities.length > 0) // Filter out empty entries
+                      .filter((location) => Array.isArray(location.cities) && location.cities.length > 0) // Filter out empty entries
                       .map((location, idx) => (
                         <div key={idx}>
                           <strong>{location.country}</strong> - {location.state} :{' '}
@@ -757,10 +961,11 @@ const CompanyManageTable = () => {
           <button
             key={i + 1}
             onClick={() => paginate(i + 1)}
-            className={`px-4 py-2 mx-1 rounded-md ${currentPage === i + 1
+            className={`px-4 py-2 mx-1 rounded-md ${
+              currentPage === i + 1
                 ? 'bg-blue-500 text-white'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+            }`}
           >
             {i + 1}
           </button>

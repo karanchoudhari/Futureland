@@ -18,4 +18,4 @@ const Setting = () => {
   );
 };
 
-export default Setting; // ✅ Also ensure it's exported as "Setting"
+export default Setting;

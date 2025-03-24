@@ -12,7 +12,7 @@ function Newsfetch() {
       
       
       const jsonData = await response.json();
-      console.log('Fetched Articles:', jsonData.articles); // Debugging log
+      // console.log('Fetched Articles:', jsonData.articles); // Debugging log
       setArticles(jsonData.articles || []);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -29,7 +29,7 @@ function Newsfetch() {
         {articles.map((article, index) => (
           <div
             key={index}
-            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow-md mb-4"
+            className="flex items-center justify-between bg-gray-100 p-2 rounded-lg shadow-md mb-4"
           >
             <div className="flex-1 pr-4">
               <a
@@ -38,8 +38,8 @@ function Newsfetch() {
                 rel="noopener noreferrer"
                 className="text-md font-semibold text-gray-800 hover:text-blue-600 cursor-pointer"
               >
-                {article.title.length > 50
-                  ? `${article.title.substring(0, 50)}... Read More`
+                {article.title.length > 20
+                  ? `${article.title.substring(0, 20)}... Read More`
                   : article.title}
               </a>
               <p className="text-sm text-gray-500 mt-1">

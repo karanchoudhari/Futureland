@@ -146,7 +146,9 @@ const Blogfront = () => {
   const closeUpdateModal = () => setShowUpdateModal(false);
 
   return (
-    <div className="flex flex-col h-auto bg-gray-100 p-6">
+    <div className="flex flex-col h-auto bg-gray-100 p-6" 
+   
+    >
       {/* Header with Add Blog Button */}
         <h1 className="text-2xl font-bold text-gray-800 text-center">Blog List</h1>
       <div className="flex justify-between items-center mb-6">

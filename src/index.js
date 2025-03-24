@@ -130,6 +130,7 @@ import Addblogs from './Component/Management/Blog/blogadd';
 // import Addgraph from './Component/Overview/addgraph';
 import Blogfront from './Component/Management/Blog/blogfront';
 import Graphfront from './Component/Overview/graphfront';
+import Usermain from './Component/Management/User/usermain';
 
 const router = createBrowserRouter([
   {
@@ -154,6 +155,7 @@ const router = createBrowserRouter([
       { path: '/projectlist', element: <ProjectList /> },
       { path: '/table3', element: <Table3 /> },
       { path: '/dash', element: <Dashboard /> },
+      { path: '/usermain', element: <Usermain /> },
     ],
   },
 ]);

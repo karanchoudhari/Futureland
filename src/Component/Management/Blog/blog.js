@@ -595,7 +595,7 @@ const Blog = () => {
               </a> */}
             </span>
           )}
-          <label className="cursor-pointer flex justify-between align-center bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+          {/* <label className="cursor-pointer flex justify-between align-center bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
             <Upload size={20} /> Upload Doc
             <input
               type="file"
@@ -603,7 +603,7 @@ const Blog = () => {
               onChange={handleFileUpload}
               className="hidden"
             />
-          </label>
+          </label> */}
         </div>
       </div>
       <div

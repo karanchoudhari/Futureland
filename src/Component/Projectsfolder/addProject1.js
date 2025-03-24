@@ -853,6 +853,8 @@
 // };
 
 // export default AddProject1;
+
+
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import DatePicker from "react-datepicker";
@@ -1673,24 +1675,24 @@ const AddProject1 = ({ editingProject, onClose }) => {
 
         {/* Success Modal */}
         {showSuccessModal && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
-    <div className="bg-white rounded-2xl shadow-lg p-8 w-96 relative">
-      <button 
-        onClick={closeSuccessModal} 
-        className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full"
-      >
-        <X className="w-6 h-6" />
-      </button>
-      <div className="flex flex-col items-center">
-        <CheckCircle className="w-12 h-12 text-green-500 mb-4" />
-        <h2 className="text-2xl font-bold mb-2">Congratulations!</h2>
-        <p className="text-gray-600 text-center">
-          Your project has been successfully submitted.
-        </p>
-      </div>
-    </div>
-  </div>
-)}
+          <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="bg-white rounded-2xl shadow-lg p-8 w-96 relative">
+              <button
+                onClick={closeSuccessModal}
+                className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              <div className="flex flex-col items-center">
+                <CheckCircle className="w-12 h-12 text-green-500 mb-4" />
+                <h2 className="text-2xl font-bold mb-2">Congratulations!</h2>
+                <p className="text-gray-600 text-center">
+                  Your project has been successfully submitted.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
 
         {/* Update Modal */}
