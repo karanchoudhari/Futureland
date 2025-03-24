@@ -222,41 +222,21 @@
 // export default Detail;
 
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import MapComponent from '../Projectsfolder/NestComponent_Project/mapComponent_kml';
-import axios from 'axios'; // Import axios for API calls
 
 const Detail = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const project = location.state?.project;
-    const [districtData, setDistrictData] = useState(null); // State to store district data
-
-    // Fetch district data from the backend
-    useEffect(() => {
-        if (project?._id) {
-            const fetchDistrictData = async () => {
-                try {
-                    const response = await axios.get(`/api/projects/district`, {
-                        headers: {
-                            'x-project-id': project._id, // Pass project ID in headers
-                        },
-                    });
-                    setDistrictData(response.data.district); // Set district data
-                } catch (error) {
-                    console.error('Error fetching district data:', error);
-                }
-            };
-            fetchDistrictData();
-        }
-    }, [project]);
 
     if (!project) {
         return <p className="text-xl text-gray-500">No project data available.</p>;
     }
 
+     console.log(project , "this is project detail")
     // Function to format dates
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -334,24 +314,18 @@ const Detail = () => {
 
                         <div className="mt-8">
                             <div className="w-full sm:w-3/4 md:w-1/2 bg-white p-6 rounded-lg shadow-sm">
-                                {districtData ? (
-                                    <>
-                                        <p className="text-gray-600 font-medium mt-2">
-                                            <strong>Registrar Office:</strong> {districtData.registrarOffice}
-                                        </p>
-                                        <p className="text-gray-600 font-medium mt-2">
-                                            <strong>Circle Rate:</strong> {districtData.circleRate}
-                                        </p>
-                                        <p className="text-gray-600 font-medium mt-2">
-                                            <strong>District Magistrate:</strong> {districtData.districtMagistrate}
-                                        </p>
-                                        <p className="text-gray-600 font-medium mt-2">
-                                            <strong>Population of District:</strong> {districtData.population}
-                                        </p>
-                                    </>
-                                ) : (
-                                    <p className="text-gray-600 font-medium mt-2">Loading district data...</p>
-                                )}
+                                <p className="text-gray-600 font-medium mt-2">
+                                    <strong>Registrar Office:</strong> {project.district.registrarOffice}
+                                </p>
+                                <p className="text-gray-600 font-medium mt-2">
+                                    <strong>Circle Rate:</strong> {project.district.circleRate}
+                                </p>
+                                <p className="text-gray-600 font-medium mt-2">
+                                    <strong>District Magistrate:</strong> {project.district.districtMagistrate}
+                                </p>
+                                <p className="text-gray-600 font-medium mt-2">
+                                    <strong>Population of District:</strong> {project.district.population}
+                                </p>
                             </div>
                         </div>
                     </div>
