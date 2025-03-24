@@ -115,7 +115,7 @@ import React from 'react';
 const UserProfile = () => {
   return (
     <div className="max-w-4xl mx-auto my-8 p-8 bg-white rounded-2xl shadow-lg">
-      <h1 className="text-3xl font-bold text-blue-600 mb-6">User Profile</h1>
+      <h1 className="text-3xl font-bold text-blue-600 mb-6 text-center">Company Profile</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Company Name */}
         <div>
@@ -130,7 +130,7 @@ const UserProfile = () => {
 
         {/* Name */}
         <div>
-          <label className="block text-gray-600 mb-1">Name</label>
+          <label className="block text-gray-600 mb-1">Owner</label>
           <input 
             type="text" 
             value="John Doe" 

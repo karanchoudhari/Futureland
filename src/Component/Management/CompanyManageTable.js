@@ -785,6 +785,7 @@ const CompanyManageTable = () => {
   const [editingCompany, setEditingCompany] = useState(null); // State to track the company being edited
   const entriesPerPage = 5; // Number of entries per page
 
+  
   // Load company data from localStorage on component mount
   useEffect(() => {
     const storedCompanyData = JSON.parse(localStorage.getItem('companyData')) || [];

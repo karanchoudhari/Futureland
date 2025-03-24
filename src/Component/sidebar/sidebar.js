@@ -28,7 +28,7 @@ const Sidebar = () => {
                 <Link  onClick={() => setModalOpen(true)}
                     style={{ cursor: 'pointer', position: 'relative' }} to="/user" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
                     <UserCircle2Icon size={20} />
-                    <span>User</span>
+                    <span>CompanyProfile</span>
                 </Link>
                 <Link to="/dashboard" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
                     <Home size={20} />
