@@ -222,6 +222,7 @@
 // export default Detail;
 
 
+
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
