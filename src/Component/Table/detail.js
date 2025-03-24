@@ -1,4 +1,4 @@
- 
+
 
 
 
@@ -121,7 +121,7 @@ const Detail = () => {
         return <p className="text-xl text-gray-500">No project data available.</p>;
     }
 
-     console.log(project , "this is project detail")
+    console.log(project, "this is project detail")
     // Function to format dates
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -174,8 +174,8 @@ const Detail = () => {
                                         {field.key === 'cost'
                                             ? formatCostInINR(project[field.key]) // Format cost in INR
                                             : field.key.includes('Date')
-                                            ? formatDate(project[field.key])
-                                            : project[field.key]}
+                                                ? formatDate(project[field.key])
+                                                : project[field.key]}
                                     </p>
                                     <div className="border-t border-gray-200 mt-2"></div>
                                 </div>
@@ -200,18 +200,19 @@ const Detail = () => {
                         <div className="mt-8">
                             <div className="w-full sm:w-3/4 md:w-1/2 bg-white p-6 rounded-lg shadow-sm">
                                 <p className="text-gray-600 font-medium mt-2">
-                                    <strong>Registrar Office:</strong> {project.district.registrarOffice}
+                                    <strong>Registrar Office:</strong> {project?.district?.registrarOffice ?? 'Not Available'}
                                 </p>
                                 <p className="text-gray-600 font-medium mt-2">
-                                    <strong>Circle Rate:</strong> {project.district.circleRate}
+                                    <strong>Circle Rate:</strong> {project?.district?.circleRate ?? "N/A"}
                                 </p>
                                 <p className="text-gray-600 font-medium mt-2">
-                                    <strong>District Magistrate:</strong> {project.district.districtMagistrate}
+                                    <strong>District Magistrate:</strong> {project?.district?.districtMagistrate ?? "N/A"}
                                 </p>
                                 <p className="text-gray-600 font-medium mt-2">
-                                    <strong>Population of District:</strong> {project.district.population}
+                                    <strong>Population of District:</strong> {project?.district?.population?.toLocaleString() ?? "N/A"}
                                 </p>
                             </div>
+
                         </div>
                     </div>
                 </div>

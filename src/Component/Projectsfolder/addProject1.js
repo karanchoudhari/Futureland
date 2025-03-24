@@ -1010,7 +1010,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
         population: formData.population,
         registrarOffice: formData.registrarOffice,
         circleRate: formData.circleRate,
-        // kml: kmlurl ? kmlurl : [],
+        kml: kmlurl ? kmlurl : [],
       };
 
       if (editingProject) {
@@ -1063,8 +1063,11 @@ const AddProject1 = ({ editingProject, onClose }) => {
   const handleKmlUpload = async (e) => {
     e.preventDefault()
 
+    console.log(` this is kmlk file ${kmlFiles}`)
+
     if (kmlFiles.length === 0) {
       setMessage("No KML files selected!");
+      console.log("No kml uploaded")
       await handleSubmit()
       return;
     }
