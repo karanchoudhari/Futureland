@@ -121,6 +121,7 @@ const Detail = () => {
         return <p className="text-xl text-gray-500">No project data available.</p>;
     }
 
+     console.log(project , "this is project detail")
     // Function to format dates
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -199,16 +200,16 @@ const Detail = () => {
                         <div className="mt-8">
                             <div className="w-full sm:w-3/4 md:w-1/2 bg-white p-6 rounded-lg shadow-sm">
                                 <p className="text-gray-600 font-medium mt-2">
-                                    <strong>Registrar Office:</strong> Sector 44, Gurugram
+                                    <strong>Registrar Office:</strong> {project.district.registrarOffice}
                                 </p>
                                 <p className="text-gray-600 font-medium mt-2">
-                                    <strong>Circle Rate:</strong> $100/sq.ft
+                                    <strong>Circle Rate:</strong> {project.district.circleRate}
                                 </p>
                                 <p className="text-gray-600 font-medium mt-2">
-                                    <strong>District Magistrate:</strong> Mr. John Doe
+                                    <strong>District Magistrate:</strong> {project.district.districtMagistrate}
                                 </p>
                                 <p className="text-gray-600 font-medium mt-2">
-                                    <strong>Population of District:</strong> 1.2 million
+                                    <strong>Population of District:</strong> {project.district.population}
                                 </p>
                             </div>
                         </div>
