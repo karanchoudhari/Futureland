@@ -32,3 +32,5 @@ lerna-debug.log*
 ### Mapbox Cache ###
 .mapbox/
 mapbox_token.json
+
+axiosinstance.js
