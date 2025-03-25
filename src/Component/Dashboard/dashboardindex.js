@@ -128,7 +128,7 @@ const DashboardIndex = () => {
       }}>
         
         {/* Mapbox (Larger) */}
-        <div  data-aos="zoom-in-left" style={{ flex: 1.5, minHeight: '60vh', borderRadius: '15px', overflow: 'hidden' }}>
+        <div  data-aos="zoom-in-left" style={{ flex: 1.5, minHeight: '60vh', borderRadius: '15px', overflow: 'hidden' }} >
           <Mapbox />
         </div>
 
@@ -141,15 +141,16 @@ const DashboardIndex = () => {
           overflow: 'hidden' 
         }}>
           
-          {/* Scrollable Graph */}
+          {/*  */}
           <div data-aos="zoom-in" style={{ 
             flex: 1, 
             minWidth: '58%', 
+            marginBottom:'60px',
             maxHeight: '35vh', 
+            marginTop:'0%',
             overflowY: 'auto',
             scrollbarWidth: 'none'
           }} className="hide-scroll">
-            {/* <Graph /> */}
             <Locationselect/>
           </div>
           
@@ -157,7 +158,7 @@ const DashboardIndex = () => {
           <div data-aos="zoom-in" style={{ 
             flex: 1, 
             minWidth: '30%', 
-            maxHeight: '35vh', 
+            maxHeight: '30vh', 
             overflowY: 'auto', 
             display: 'flex', 
             justifyContent: 'flex-end',

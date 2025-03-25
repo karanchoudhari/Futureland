@@ -287,7 +287,7 @@ const GraphTable = () => {
   const closeUpdateModal = () => setShowUpdateModal(false);
 
   return (
-    <div className="flex justify-center p-6">
+    <div className="flex justify-center p-4">
       <div className="max-w-4xl w-full rounded-3xl shadow-lg bg-gray-100 overflow-hidden">
         <div className="flex justify-between items-center p-4 bg-gray-200">
           <button

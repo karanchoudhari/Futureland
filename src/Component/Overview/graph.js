@@ -90,7 +90,7 @@ const GovernmentSpendingGraph = () => {
       }}>
         Government Spending Sectors ({currentYear})
       </h2>
-      <div style={{ height: '400px' }}>
+      <div style={{ height: '210px' }}>
         <Bar data={data} options={options} />
       </div>
     </div>
