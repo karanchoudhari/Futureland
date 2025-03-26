@@ -1,19 +1,15 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import Cookies from 'js-cookie'
+import { createAsyncThunk , createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../../Component/axiosInstance";
-
-
-const getallkml = createAsyncThunk('display', async (projectid, { rejectWithValue }) => {
+ 
+const getChartData = createAsyncThunk('display', async (projectid, { rejectWithValue }) => {
     try {
-        const response = await axiosInstance.get(`/project/getKml`, {
+        const response = await axiosInstance.get(`/project/chartdata`, {
             headers: {
                 'x-auth-token': localStorage.getItem('token'),
-                'x-report-id': Cookies.get('reportId'),
-                'x-project-id':projectid
+                 
             }
         });
-        
+        // console.log(response.data  , "yo hai data")
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response?.data?.message || "An unexpected error occurred");
@@ -21,8 +17,8 @@ const getallkml = createAsyncThunk('display', async (projectid, { rejectWithValu
 });
 
 
-const getallkmlSlice = createSlice({
-    name: 'Getallkml',
+const getChartDataSlice = createSlice({
+    name: 'getChartData',
     initialState: {
         loading: false,
         error: null,
@@ -33,20 +29,20 @@ const getallkmlSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getallkml.pending, (state) => {
+            .addCase(getChartData.pending, (state) => {
                 state.loading = true;
                 state.error = null;
                 state.data = null;
                 state.isSuccess = false;
                 state.isError = false;
             })
-            .addCase(getallkml.fulfilled, (state, action) => {
+            .addCase(getChartData.fulfilled, (state, action) => {
                 state.loading = false;
-                state.data = action.payload.data;
+                state.data = action.payload;
                 state.isSuccess = true;
                 state.isError = false;
             })
-            .addCase(getallkml.rejected, (state, action) => {
+            .addCase(getChartData.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload || action.error.message;
                 state.data = null;
@@ -57,5 +53,5 @@ const getallkmlSlice = createSlice({
 })
 
 
-export   { getallkml}  ;
-export default getallkmlSlice.reducer;
+export   { getChartData}  ;
+export default getChartDataSlice.reducer;
