@@ -857,7 +857,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Country, State, City } from "country-state-city";
 import { Plus, Upload, X, CheckCircle, Trash, Edit, FilePlus, MapPinned } from "lucide-react";
@@ -1105,20 +1105,20 @@ const AddProject1 = ({ editingProject, onClose }) => {
       <Paper elevation={3} sx={{ p: 5, borderRadius: 6, maxWidth: 850, width: '100%', background: '#fff', mt: 0, position: 'relative' }}>
         <button
           className="
-    absolute 
-    -top-3 
-    -right-3 
-    bg-white 
-    w-[30px] 
-    h-[30px] 
-    border 
-    border-gray-300 
-    shadow-md 
-    flex 
-    items-center 
-    justify-center
-    rounded-full
-  "
+                    absolute 
+                    -top-3 
+                    -right-3 
+                    bg-white 
+                    w-[30px] 
+                    h-[30px] 
+                    border 
+                    border-gray-300 
+                    shadow-md 
+                    flex 
+                    items-center 
+                    justify-center
+                    rounded-full
+                  "
           onClick={onClose}
         >
           <X size={16} />
@@ -1410,7 +1410,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
             {/* districtMagistrate */}
             <Grid item xs={12} md={6}>
               <TextField
-                label="DistrictMagistrate"
+                label="District Magistrate"
                 fullWidth
                 size="small"
                 name="districtMagistrate"
@@ -1457,7 +1457,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
             {/* registrarOffice */}
             <Grid item xs={12} md={6}>
               <TextField
-                label="RegistrarOffice"
+                label="Registrar Office"
                 fullWidth
                 size="small"
                 name="registrarOffice"
@@ -1480,7 +1480,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
             {/* circleRate */}
             <Grid item xs={12} md={6}>
               <TextField
-                label="CircleRate (INR)"
+                label="Circle Rate (INR)"
                 fullWidth
                 size="small"
                 name="circleRate"
