@@ -38,14 +38,14 @@ const CompanyManageTable = () => {
     if(editingCompany != null ){
       console.log("edit clicked");
       // console.log("This is company data",editingCompany._id , newCompany)
-      dispatch(updateCompany({ id: editingCompany._id, newCompany }))
-
+      await dispatch(updateCompany({ id: editingCompany._id, newCompany }))
+      dispatch(allcompanylist())
       return ;
     }
      
     // console.log("This is company data",newCompany)
     await dispatch(addCompany(newCompany)) 
-    dispatch(allcompanylist())
+    dispatch(allcompanylist()) 
     // setCompanyData(updatedCompanyData);
     // localStorage.setItem('companyData', JSON.stringify(updatedCompanyData));
     setShowSuccessModal(true); // Show success modal

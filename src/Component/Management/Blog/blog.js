@@ -582,7 +582,7 @@ const Blog = () => {
   return (
     <div className="bg-gray-900 p-6 pt-0 rounded-lg shadow-lg w-full max-w-2xl">
       <div className=" mb-3">
-        <h2 className="text-2xl font-bold text-white uppercase text-center">Infrastructure</h2>
+        <h2 className="text-2xl font-bold text-white uppercase text-start">Infrastructure</h2>
         <div className="flex items-center gap-2 mt-2">
           {uploadedFile && (
             <span className="text-sm text-white flex bg-green-500 px-4 py-2 rounded">

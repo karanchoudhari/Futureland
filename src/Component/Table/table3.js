@@ -640,7 +640,7 @@ const Table3 = () => {
           {/* Total Projects Section */}
           {sections.some(section => section.title === "Total Projects") && (
             <div>
-              <h2 className="text-xl font-semibold mb-4 text-white uppercase">Total Projects</h2>
+              {/* <h2 className="text-xl font-semibold mb-4 text-white uppercase">Total Projects</h2> */}
               <div className="bg-gray-800 p-6 rounded-2xl shadow-lg w-full">
                 {sections
                   .find(section => section.title === "Total Projects")

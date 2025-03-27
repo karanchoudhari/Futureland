@@ -113,7 +113,13 @@ const DashboardIndex = () => {
     }}>
       
       {/* Left Side - Table3 */}
-      <div data-aos="fade-right" style={{ width: '28%', minWidth: '300px', maxWidth: '400px' }}>
+
+      <div>
+
+
+
+      </div>
+      <div  data-aos="fade-right" style={{ width: '28%', minWidth: '300px', maxWidth: '400px' }}>
         <Table3 />
       </div>
 
@@ -122,14 +128,17 @@ const DashboardIndex = () => {
         display: 'flex', 
         flexDirection: 'column', 
         justifyContent: 'space-between', 
-        width: '72%', 
+        width: '80%', 
         gap: '20px', 
         overflow: 'hidden' 
       }}>
         
         {/* Mapbox (Larger) */}
-        <div  data-aos="zoom-in-left" style={{ flex: 1.5, minHeight: '60vh', borderRadius: '15px', overflow: 'hidden' }} >
-          <Mapbox />
+        <div  data-aos="zoom-in-left" style={{ flex: 1.5, minHeight: '60vh', borderRadius: '15px', overflow: 'hidden' , boxShadow: 'white 1px 2px 10px 5px' }} >
+          {/* <div className=' w-[90] ' > */}
+            <Mapbox />
+          {/* </div> */}
+          {/* <Mapbox /> */}
         </div>
 
         {/* Graph & Blog Section */}
