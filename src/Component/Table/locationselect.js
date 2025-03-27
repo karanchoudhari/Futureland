@@ -102,7 +102,7 @@ const Locationselect = ({ onProjectsUpdate }) => {
     return (
         <>
          <div className='mb-8'>
-                <h2 className="text-2xl font-bold mb-6 text-white text-center uppercase">Select Location</h2>
+                <h2 className="text-2xl font-bold mb-4 text-white text-start uppercase">Select Location</h2>
                 <div className="p-2 bg-gray-800 rounded-2xl shadow-lg max-w-6xl mx-auto">
                     {/* Table Structure */}
                     <div className="overflow-auto w-full bg-gray-800 shadow-md rounded-md" style={{ maxHeight: '500px' }}>

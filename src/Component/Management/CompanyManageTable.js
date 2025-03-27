@@ -5,6 +5,7 @@ import CompanyDeleteButton from './ManagementButtons/companyDeleteButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { allcompanylist } from '../../FeatureRedux/CompanyReducer/getCompanylist'
 import {addCompany} from '../../FeatureRedux/CompanyReducer/addCompany'
+import {updateCompany } from '../../FeatureRedux/CompanyReducer/updateCompany'
 
 const CompanyManageTable = () => {
   const [showAddForm, setShowAddForm] = useState(false); // State to toggle the form visibility
@@ -33,8 +34,16 @@ const CompanyManageTable = () => {
 
   // Add or update company data
   const addCompanyData =async (newCompany) => {
+
+    if(editingCompany != null ){
+      console.log("edit clicked");
+      // console.log("This is company data",editingCompany._id , newCompany)
+      dispatch(updateCompany({ id: editingCompany._id, newCompany }))
+
+      return ;
+    }
      
-    console.log("This is company data",newCompany)
+    // console.log("This is company data",newCompany)
     await dispatch(addCompany(newCompany)) 
     dispatch(allcompanylist())
     // setCompanyData(updatedCompanyData);
@@ -46,8 +55,14 @@ const CompanyManageTable = () => {
   const handleEdit = (id) => {
     const companyToEdit = componydata.data.find((company) => company._id === id);
     setEditingCompany(companyToEdit); // Set the company being edited
+    
+    
+
     setShowAddForm(true); 
+
   };
+
+  // console.log(`editingCompany data ${JSON.stringify(editingCompany)}`)
 
 
   // Pagination logic
@@ -60,8 +75,9 @@ const CompanyManageTable = () => {
 
   return (
     <div className="space-y-6">
-      {/* Add Company Button */}
-      <div className="flex justify-end">
+      <div className="flex justify-between items-center">
+      <span className="text-2xl font-bold text-gray-800">Company Management List</span>
+
         <button
           onClick={() => {
             setEditingCompany(null); // Reset editing company

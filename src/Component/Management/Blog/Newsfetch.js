@@ -29,20 +29,20 @@ function Newsfetch() {
         {articles.map((article, index) => (
           <div
             key={index}
-            className="flex items-center justify-between bg-gray-100 p-2 rounded-lg shadow-md mb-4"
+            className="flex items-center justify-between bg-gray-800 p-2 rounded-lg shadow-md mb-4"
           >
             <div className="flex-1 pr-4">
               <a
                 href={article.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-md font-semibold text-gray-800 hover:text-blue-600 cursor-pointer"
+                className="text-md font-semibold text-white hover:text-blue-600 cursor-pointer"
               >
                 {article.title.length > 20
                   ? `${article.title.substring(0, 20)}... Read More`
                   : article.title}
               </a>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-white mt-1">
                 {new Date(article.publishedAt).toLocaleDateString()}
               </p>
             </div>
