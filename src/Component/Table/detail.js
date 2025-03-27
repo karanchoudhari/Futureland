@@ -283,6 +283,7 @@ const Detail = () => {
                                 { label: 'City', key: 'city' },
                                 { label: 'Start Date', key: 'startDate' },
                                 { label: 'End Date', key: 'endDate' },
+                                { label: 'contractor', key: 'contractor' },
                             ].map((field, index) => (
                                 <div key={index} className="mb-4">
                                     <p className="text-gray-600 font-medium">

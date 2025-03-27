@@ -981,21 +981,6 @@ const AddProject1 = ({ editingProject, onClose }) => {
   const handleSubmit = async (kmlurl) => {
     console.log("upload kml s")
 
-    // const emptyFields = Object.entries(formData)
-    //   .filter(([key, value]) => {
-    //     if (key === "startDate" || key === "endDate") {
-    //       return value === null;
-    //     }
-    //     return value === "";
-    //   })
-    //   .map(([key]) => key);
-
-    // if (emptyFields.length > 0) {
-    //   setShakeFields(emptyFields);
-    //   setTimeout(() => setShakeFields([]), 500);
-    //   return;
-    // }
-
     try {
       const payload = {
         project_name: formData.project_name,
