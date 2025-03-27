@@ -7,6 +7,7 @@ import addCompany from './FeatureRedux/CompanyReducer/addCompany'
 import getChartData from './FeatureRedux/chartReducer/donatchartget'
 import allcompanylist from './FeatureRedux/CompanyReducer/getCompanylist'
 import deleteCompany from './FeatureRedux/CompanyReducer/deleteCompany'
+import updateCompany from './FeatureRedux/CompanyReducer/updateCompany'
 const store = configureStore({
   reducer: {
     counter: counterReducer,
@@ -17,6 +18,7 @@ const store = configureStore({
     getChartData:getChartData,
     allcompanylist:allcompanylist,
     deleteCompany:deleteCompany,
+    updateCompany:updateCompany,
   },
 });
 
