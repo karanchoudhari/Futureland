@@ -151,7 +151,7 @@ const Speedmetre = () => {
 
     {/* Speedometer Display */}
     <div className="flex justify-center">
-      <div className="w-full h-[20vh]">
+      <div className="w-full h-[20vh] mx-auto">
         <ReactSpeedometer
           maxValue={200}
           value={count}

@@ -18,7 +18,7 @@ const ChartComponent = () => {
     dispatch(getChartData());
   }, [dispatch]);
 
-  console.log("Fetched API Data:", chartData);
+  console.log("Fetched API Data:this is sector ", chartData);
 
   // Extract API data (handling case when it's undefined)
   const sectors = chartData?.sectors || {};
