@@ -5,6 +5,7 @@ import { Country, State, City } from "country-state-city";
 import { Plus, Upload, X, CheckCircle, Trash, Edit, FilePlus, MapPinned } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { TextField, MenuItem, Button, Box, Typography, Grid, Paper, Divider, IconButton, InputAdornment } from '@mui/material';
+import axiosInstance from "../axiosInstance";
 
 const AddProject1 = ({ editingProject, onClose }) => {
   const [formData, setFormData] = useState({
@@ -169,8 +170,8 @@ const AddProject1 = ({ editingProject, onClose }) => {
       };
 
       if (editingProject) {
-        const response = await axios.put(
-          `http://localhost:3002/api/project/updateProject`,
+        const response = await axiosInstance.put(
+          `/project/updateProject`,
           payload,
           {
             headers: {
@@ -183,8 +184,8 @@ const AddProject1 = ({ editingProject, onClose }) => {
         console.log('Project updated successfully:', response.data);
         setShowUpdateModal(true);
       } else {
-        const response = await axios.post(
-          'http://localhost:3002/api/project/createProject',
+        const response = await axiosInstance.post(
+          '/project/createProject',
           payload,
           {
             headers: {
