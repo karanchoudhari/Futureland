@@ -227,6 +227,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import MapComponent from '../Projectsfolder/NestComponent_Project/mapComponent_kml';
+import ProjectPDFview from '../projectDetailComponent/projectPDFview';
 
 const Detail = () => {
     const location = useLocation();
@@ -236,6 +237,8 @@ const Detail = () => {
     if (!project) {
         return <p className="text-xl text-gray-500">No project data available.</p>;
     }
+
+
 
     console.log(project, "this is project detail")
     // Function to format dates
@@ -331,6 +334,10 @@ const Detail = () => {
                             </div>
 
                         </div>
+                    </div>
+
+                    <div>
+                        <ProjectPDFview pdfUrl={project.documentFile[0]}  />
                     </div>
                 </div>
             </div>

@@ -504,7 +504,7 @@ const ProjectList = ({ onEditProject }) => {
       }
       return String(value).toLowerCase().includes(searchQuery.toLowerCase());
     });
-    return uniqueValues.slice(0,4); // Show only 4 values
+    return uniqueValues.slice(0, 4); // Show only 4 values
   };
 
   // Function to get short name for country, state, and city
@@ -679,9 +679,8 @@ const ProjectList = ({ onEditProject }) => {
             <button
               key={index}
               onClick={() => handlePageChange(index + 1)}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition-all ${
-                currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
-              }`}
+              className={`px-4 py-2 rounded-md text-sm font-semibold transition-all ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
+                }`}
             >
               {index + 1}
             </button>
