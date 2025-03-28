@@ -134,7 +134,7 @@ const DashboardIndex = () => {
       }}>
         
         {/* Mapbox (Larger) */}
-        <div  data-aos="zoom-in-left" style={{ flex: 1.5, minHeight: '60vh', borderRadius: '15px', overflow: 'hidden' , boxShadow: 'white 1px 2px 10px 5px' }} >
+        <div  data-aos="zoom-in-left" style={{ flex: 1.5, minHeight: '60vh', borderRadius: '15px', overflow: 'hidden' }} >
           {/* <div className=' w-[90] ' > */}
             <Mapbox />
           {/* </div> */}

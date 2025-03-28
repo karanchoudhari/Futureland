@@ -74,17 +74,17 @@ const CompanyManagementAdd = ({ onClose, addCompanyData, editingCompany }) => {
   // Get states based on selected country
   const states = selectedCountry
     ? State.getStatesOfCountry(selectedCountry.value).map((state) => ({
-        value: state.isoCode,
-        label: state.name,
-      }))
+      value: state.isoCode,
+      label: state.name,
+    }))
     : [];
 
   // Get cities based on selected state
   const cities = selectedState
     ? City.getCitiesOfState(selectedCountry?.value, selectedState?.value).map((city) => ({
-        value: city.name,
-        label: city.name,
-      }))
+      value: city.name,
+      label: city.name,
+    }))
     : [];
 
   // Handle country selection
@@ -394,11 +394,15 @@ const CompanyManagementAdd = ({ onClose, addCompanyData, editingCompany }) => {
                   <p className="font-semibold text-gray-800">
                     {selection.country}, {selection.state}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  {/* <p className="text-sm text-gray-600">
                     <strong>Cities:</strong>
                     {Array.isArray(selection.cities)
                       ? selection.cities.map((city) => city.label).join(', ')
                       : 'N/A'}
+                  </p> */}
+
+                  <p className="text-sm text-gray-600">
+                    <strong>Cities:</strong> {selection.cities.join(', ')}
                   </p>
                 </div>
               ))}
