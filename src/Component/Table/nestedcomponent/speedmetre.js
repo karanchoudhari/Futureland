@@ -134,7 +134,7 @@ const Speedmetre = () => {
   const daysOptions = [2, 10, 20, 30, 40, 50, 60];
 
   return (
-    <div className="bg-gray-800 p-7 rounded-lg shadow-lg text-white max-w-md mx-auto sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-4xl">
+    <div className="bg-gray-800 p-7 rounded-lg shadow-lg text-white w-full ">
     {/* Dropdown for selecting days */}
     <div className="mb-4">
       <label className="block mb-2 text-sm font-medium">Select Days:</label>
