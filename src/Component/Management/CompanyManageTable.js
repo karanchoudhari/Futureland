@@ -75,8 +75,9 @@ const CompanyManageTable = () => {
 
   return (
     <div className="space-y-6">
-      {/* Add Company Button */}
-      <div className="flex justify-end">
+      <div className="flex justify-between items-center">
+      <span className="text-2xl font-bold text-gray-800">Company Management List</span>
+
         <button
           onClick={() => {
             setEditingCompany(null); // Reset editing company

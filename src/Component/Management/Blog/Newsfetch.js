@@ -42,7 +42,7 @@ function Newsfetch() {
                   ? `${article.title.substring(0, 20)}... Read More`
                   : article.title}
               </a>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-white mt-1">
                 {new Date(article.publishedAt).toLocaleDateString()}
               </p>
             </div>
