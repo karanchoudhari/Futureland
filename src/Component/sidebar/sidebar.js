@@ -38,7 +38,7 @@ const Sidebar = () => {
                     <Settings size={20} />
                     <span>Settings</span>
                 </Link>
-                <Link to="/management" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
+                <Link to="/management/company_management" className="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-700">
                     <MapPinIcon size={20} />
                     <span>Management</span>
                 </Link>
