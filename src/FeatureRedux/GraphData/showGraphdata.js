@@ -1,16 +1,19 @@
-import { createAsyncThunk , createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import Cookies from 'js-cookie'
 import axiosInstance from "../../Component/axiosInstance";
- 
-const getChartData = createAsyncThunk('display', async (projectid, { rejectWithValue }) => {
+
+
+const getallGraphdata = createAsyncThunk('display', async (projectid, { rejectWithValue }) => {
     try {
-        console.log('api called ')
-        const response = await axiosInstance.get(`/project/chartdata`, {
+        const response = await axiosInstance.get(`/graph/getGraphdata`, {
             headers: {
                 'x-auth-token': localStorage.getItem('token'),
-                 
+                'x-report-id': Cookies.get('reportId'),
+                'x-project-id': projectid
             }
         });
-        // console.log(response.data  , "yo hai data")
+
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response?.data?.message || "An unexpected error occurred");
@@ -18,8 +21,8 @@ const getChartData = createAsyncThunk('display', async (projectid, { rejectWithV
 });
 
 
-const getChartDataSlice = createSlice({
-    name: 'getChartData',
+const getallGraphdataSlice = createSlice({
+    name: 'getallGraphdata',
     initialState: {
         loading: false,
         error: null,
@@ -30,20 +33,20 @@ const getChartDataSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getChartData.pending, (state) => {
+            .addCase(getallGraphdata.pending, (state) => {
                 state.loading = true;
                 state.error = null;
                 state.data = null;
                 state.isSuccess = false;
                 state.isError = false;
             })
-            .addCase(getChartData.fulfilled, (state, action) => {
+            .addCase(getallGraphdata.fulfilled, (state, action) => {
                 state.loading = false;
-                state.data = action.payload;
+                state.data = action.payload.data;
                 state.isSuccess = true;
                 state.isError = false;
             })
-            .addCase(getChartData.rejected, (state, action) => {
+            .addCase(getallGraphdata.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload || action.error.message;
                 state.data = null;
@@ -54,5 +57,5 @@ const getChartDataSlice = createSlice({
 })
 
 
-export   { getChartData}  ;
-export default getChartDataSlice.reducer;
+export { getallGraphdata };
+export default getallGraphdataSlice.reducer;

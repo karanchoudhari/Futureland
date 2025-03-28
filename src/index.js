@@ -116,7 +116,7 @@ import './index.css';  // Import global styles
 import Dashboardindex from './Component/Dashboard/dashboardindex';
 import Setting from './Component/setting';
 import Management from './Component/Management/management';
-import Chart from './Component/Overview/chart';
+import Chart from './Component/Overview/chartComponent';
 import Overview from './Component/Overview/overview';
 import Addproject from './Component/Projectsfolder/addproject';
 import Table3 from './Component/Table/table3';
@@ -128,17 +128,22 @@ import UserProfile from './Component/UserProfile/userprofile';
 import Login from './Component/Loginpage/login';
 import Addblogs from './Component/Management/Blog/blogadd';
 // import Addgraph from './Component/Overview/addgraph';
-import Blogfront from './Component/Management/Blog/blogfront';
+// import Blogfront from './Component/Management/Blog/blogfront';
 import Graphfront from './Component/Overview/graphfront';
 import Usermain from './Component/Management/User/usermain';
-
+import CompanyManageTable from './Component/Management/CompanyManageTable';
+import Blogfront from './Component/Management/Blog/blogfront';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
       { path: '/dashboard', element: <Dashboardindex /> },
-      { path: '/management', element: <Management /> },
+      { path: '/management', element: <Management /> , children:[
+        { path: '/management/company_management', element: <CompanyManageTable/>    },
+        { path: '/management/blog', element: <Blogfront/> },
+        { path: '/management/graph', element: <Graphfront/> },
+      ] },
       { path: '/detail', element: <Detail /> },
       { path: '/user', element: <UserProfile /> },
       { path: '/settings', element: <Setting /> },
