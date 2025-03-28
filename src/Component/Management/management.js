@@ -2,30 +2,20 @@ import React, { useState } from 'react';
 import Blogfront from '../Management/Blog/blogfront'; // Import Blogfront component
 import Graphfront from '../Overview/graphfront'; // Import graphfront component
 import CompanyManageTable from './CompanyManageTable'; // Import the CompanyManageTable component
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const Management = () => {
   const [activeTab, setActiveTab] = useState('companyManagement'); // State to manage active tab
 
   // Render content based on active tab
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'companyManagement':
-        return <CompanyManageTable />;
-      case 'blog':
-        return <Blogfront />;
-      case 'graph':
-        return <Graphfront />;
-      default:
-        return null;
-    }
-  };
-
+  
+  const navigate = useNavigate()
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       {/* Buttons at the Top Center */}
       <div className="flex justify-center gap-4 mb-6">
         <button
-          onClick={() => setActiveTab('companyManagement')}
+          onClick={() => {navigate('/management/company_management'); setActiveTab('companyManagement')} }
           className={`px-6 py-2 rounded-t-lg transition-all ${
             activeTab === 'companyManagement'
               ? 'bg-white text-blue-500 shadow-lg'
@@ -35,7 +25,7 @@ const Management = () => {
           Company Management
         </button>
         <button
-          onClick={() => setActiveTab('blog')}
+          onClick={() =>{ navigate('/management/blog'); setActiveTab('blog');} }
           className={`px-6 py-2 rounded-t-lg transition-all ${
             activeTab === 'blog'
               ? 'bg-white text-green-500 shadow-lg'
@@ -45,7 +35,7 @@ const Management = () => {
           Blog
         </button>
         <button
-          onClick={() => setActiveTab('graph')}
+          onClick={() => {navigate('/management/graph'); setActiveTab('graph')} }
           className={`px-6 py-2 rounded-t-lg transition-all ${
             activeTab === 'graph'
               ? 'bg-white text-purple-500 shadow-lg'
@@ -57,7 +47,8 @@ const Management = () => {
       </div>
 
       {/* Render Content Based on Active Tab */}
-      {renderContent()}
+      {/* {renderContent()} */}
+      <Outlet/>
     </div>
   );
 };

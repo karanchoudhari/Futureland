@@ -1,12 +1,13 @@
 import React from 'react'
-import Chart from './chart'
+import Chart from './chartComponent'
 import Donatchart from './donatchart'
+import ChartComponent from './chartComponent'
 
 const Overview = () => {
   return (
     <div>
-        <Chart/>
-        {/* <Barchart/> */}
+        <ChartComponent/>
+        
 
 
     </div>
