@@ -247,7 +247,7 @@ const Mapbox = () => {
       <Map
         {...viewState}
         ref={mapRef}
-        mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN ||
+        mapboxAccessToken={
           'pk.eyJ1IjoibmlraXRhY2hhdWhhbjEyMyIsImEiOiJjbGwwaWxrdzEwZW02M2pxcjN4eHo1bDR1In0.I4yZh8CAQOz2c63IsCBOpg'}
         style={{ width: '100%', height: '100%' }}
         
