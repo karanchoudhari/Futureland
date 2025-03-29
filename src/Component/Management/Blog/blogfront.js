@@ -147,8 +147,15 @@ const Blogfront = () => {
 
   return (
     <div className="flex flex-col h-auto bg-gray-100 p-6" 
-   
-    >
+    
+    
+    style={{
+      overflow: 'auto',
+      height: '80vh',
+      width: '100%',
+      scrollbarWidth: '1px',
+      msOverflowStyle: 'none'
+    }}>
       {/* Header with Add Blog Button */}
         <h1 className="text-2xl font-bold text-gray-800 text-center">Blog List</h1>
       <div className="flex justify-between items-center mb-6">

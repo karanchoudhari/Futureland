@@ -309,7 +309,7 @@ const CompanyManageTable = () => {
 
       {/* Modal for Add Company Form */}
       {showAddForm && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50">
           <div 
             ref={formRef}
             className="bg-white rounded-lg shadow-lg w-10/12 md:w-3/4 lg:w-1/2 p-6 relative"
