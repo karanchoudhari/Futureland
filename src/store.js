@@ -9,6 +9,7 @@ import allcompanylist from './FeatureRedux/CompanyReducer/getCompanylist'
 import deleteCompany from './FeatureRedux/CompanyReducer/deleteCompany'
 import updateCompany from './FeatureRedux/CompanyReducer/updateCompany'
 import getallGraphdata from './FeatureRedux/GraphData/showGraphdata'
+import CreateSession from './FeatureRedux/CompanyReducer/loginCompany'
 const store = configureStore({
   reducer: {
     counter: counterReducer,
@@ -21,6 +22,7 @@ const store = configureStore({
     deleteCompany:deleteCompany,
     updateCompany:updateCompany,
     getallGraphdata:getallGraphdata,
+    CreateSession:CreateSession,
   },
 });
 

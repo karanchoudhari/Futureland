@@ -58,43 +58,81 @@
 
 
 
-
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+import { CreateSession } from '../../FeatureRedux/CompanyReducer/loginCompany';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
+    const [formData, setFormData] = useState({ email: '', password: '' });
+
+    const dispatch = useDispatch();
+    const { data, error, isLoading } = useSelector((state) => state.CreateSession);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Form submitted");
+
+        if (!formData.email || !formData.password) {
+            alert("Please enter both email and password");
+            return;
+        }
+
+        dispatch(CreateSession(formData)); // Send email & password in a single object
+        console.log("Form submitted with:", formData);
     };
+
+    useEffect(() => {
+        if (data && !error && !isLoading) {
+            localStorage.setItem('token', data.company);
+            window.location.href = '/dashboard';
+        }
+    }, [data, error, isLoading]);
 
     return (
         <>
-            <style> {` @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); }   } `} </style>
+            <style>{`
+                @keyframes float {
+                    0% { transform: translateY(0px); }
+                    50% { transform: translateY(-10px); }
+                    100% { transform: translateY(0px); }
+                }
+            `}</style>
             <div className="h-screen flex items-center justify-center bg-gray-100">
                 <div className="bg-white p-10 rounded-xl shadow-2xl w-full max-w-md">
                     <div className="text-center mb-8">
-                        <img src="http://13.202.13.248:3000/static/media/atom1.a701aa274e3a701996f2.png" alt="Prodify Logo" className="mx-auto w-32 h-auto mb-4" style={{ animation: "float 1.5s ease-in-out infinite" }} />
-                        {/* <h1 className="text-3xl font-bold">Welcome Back</h1> */}
-                        {/* <p className="text-gray-500">Enter your email and password to access your account</p> */}
+                        <img 
+                            src="http://13.202.13.248:3000/static/media/atom1.a701aa274e3a701996f2.png"
+                            alt="Prodify Logo"
+                            className="mx-auto w-32 h-auto mb-4"
+                            style={{ animation: "float 1.5s ease-in-out infinite" }}
+                        />
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-5">
                             <label className="block text-sm font-medium text-gray-700">Email</label>
                             <input
                                 type="email"
+                                name="email"
                                 placeholder="Enter your email"
                                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                value={formData.email}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="mb-5 relative">
                             <label className="block text-sm font-medium text-gray-700">Password</label>
                             <input
                                 type={showPassword ? 'text' : 'password'}
+                                name="password"
                                 placeholder="Enter your password"
                                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                value={formData.password}
+                                onChange={handleChange}
                             />
                             <div
                                 className="absolute top-10 right-3 cursor-pointer"
@@ -104,13 +142,16 @@ export default function LoginPage() {
                             </div>
                         </div>
                         <div className="flex items-center justify-end mb-6">
-
                             <a href="#" className="text-blue-500 text-sm">Forgot password?</a>
                         </div>
-                        <button type='submit' className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition">Login to your account</button>
-
+                        <button 
+                            type="submit"
+                            className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? "Logging in..." : "Login to your account"}
+                        </button>
                     </form>
-
                 </div>
             </div>
         </>
