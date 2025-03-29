@@ -73,9 +73,9 @@
 
 
 
-import React from 'react';
+import React , {useState , useEffect} from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom'; 
+import { createBrowserRouter, RouterProvider, Navigate, Outlet, useNavigate } from 'react-router-dom'; 
 import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
@@ -100,9 +100,36 @@ import CompanyManageTable from './Component/Management/CompanyManageTable';
 import Blogfront from './Component/Management/Blog/blogfront';
 
 // 🔒 Protected Route Component
-const ProtectedRoute = () => {
-  const token = localStorage.getItem('token');
-  return token ? <Outlet /> : <Navigate to="/login" replace />;
+const ProtectedRoute = ({ element }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const navigate =  useNavigate();
+
+
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        setLoading(true);
+        setIsAuthenticated(true);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setIsAuthenticated(false);
+        navigate('/login'); // Navigate to signin page
+      }
+    };
+
+    checkAuth();
+  }, [navigate]);
+
+  if (loading) {
+    return <div>Loading...</div>;  
+  }
+
+  return isAuthenticated ? element : null;
 };
 
 const router = createBrowserRouter([
@@ -110,11 +137,11 @@ const router = createBrowserRouter([
 
   {
     path: '/',
-    element: <ProtectedRoute />, // Protects all child routes
+    element: <ProtectedRoute element={<App/>}  />, // Protects all child routes
     children: [
-      { path: '/', element: <App /> },
-      { path: '/dashboard', element: <Dashboardindex /> },
-      { path: '/management', element: <Management />, children: [
+      // { path: '/', element: <App /> },
+      { path: 'dashboard', element: <Dashboardindex /> },
+      { path: 'management', element: <Management />, children: [
           { path: '/management/company_management', element: <CompanyManageTable /> },
           { path: '/management/blog', element: <Blogfront /> },
           { path: '/management/graph', element: <Graphfront /> },
@@ -128,8 +155,8 @@ const router = createBrowserRouter([
       { path: '/graphfront', element: <Graphfront /> },
       { path: '/chart', element: <Chart /> },
       { path: '/overview', element: <Overview /> },
-      { path: '/addproject', element: <Addproject /> },
-      { path: '/addProject1', element: <AddProject1 /> },
+      { path: '/addproject', element: <Addproject />  },
+      // { path: '/addProject1', element: <AddProject1 /> },
       { path: '/projectlist', element: <ProjectList /> },
       { path: '/table3', element: <Table3 /> },
       { path: '/dash', element: <Dashboard /> },
