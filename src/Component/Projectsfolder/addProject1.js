@@ -190,6 +190,7 @@ const AddProject1 = ({ editingProject, onClose }) => {
           {
             headers: {
               'x-company-id': companyId,
+              'x-auth-token':localStorage.getItem('token'),
               'Content-Type': 'application/json',
             },
           }

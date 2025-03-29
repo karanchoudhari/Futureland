@@ -62,7 +62,7 @@ import { useEffect, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { CreateSession } from '../../FeatureRedux/CompanyReducer/loginCompany';
 import { useDispatch, useSelector } from 'react-redux';
-
+import Cookies from 'js-cookie'
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -89,6 +89,9 @@ export default function LoginPage() {
     useEffect(() => {
         if (data && !error && !isLoading) {
             localStorage.setItem('token', data.company);
+            console.log(data , "this is data")
+            const ans = Boolean(data.isMaster) && data.isMaster;
+            Cookies.set('xdjadken', data.isMaster);
             window.location.href = '/dashboard';
         }
     }, [data, error, isLoading]);
